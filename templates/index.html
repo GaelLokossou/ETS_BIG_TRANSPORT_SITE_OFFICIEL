@@ -1,0 +1,248 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ets-big-transport</title>
+    <!--bootstrap-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <!--DEBUT MENU-->
+    <nav class="nav-bar" id="acceuil">
+        <ul>
+            <li class="logo">ETS BIG-TRANSPORT</li>
+            <li class="menu"><a href="#acceuil">Acceuil</a></li>
+            <li class="menu"><a href="#a-propos">A-propos</a></li>
+            <li class="menu"><a href="#nos-services">Services</a></li>
+            <li class="menu"><a href="#produits">Produits</a></li>
+            <li class="menu"><a href="#contact">Contact-nous</a></li>
+        </ul>
+        <form class="recherche" method="get" action="{% url 'search' %}">
+            <input class="search" name="search" type="search" placeholder="Recherche">
+            <a href="https://wa.me/message/GP3FPGUQQJPIG1"><img src="{% static 'images/shopping-cart-fill.svg' %}" alt="shopping"></a>
+        </form>
+    </nav>
+
+    <!--FIN MENU-->
+
+    <!--DEBUT SECTION NUMERO 1-->
+
+    <section class="section1" id="a-propos">
+        <button class="arrow left" id="prevBtn">&#10094;</button>
+        <div class="content">
+            <h1 id="sectionTitle">ETS BIG-TRANSPORT</h1>
+            <p id="sectionText">Specialement dans la fourniture de materiaux essentiels pour vos projet de construction, nous vous offrons une gamme de produits de haute qualite.</p>
+            <a href="#voir-plus"><button class="btn">VOIR PLUS</button></a>
+        </div>
+        <button class="arrow right" id="nextBtn">&#10095;</button>
+    </section>
+    <section class="section2">
+        <div class="content-1">
+            <div class="element">
+                <h3>Vente des materiels de construction</h3>
+                <p class="section-text">ETS BIG-TRANSPORT pour la livraison de materiaux de constructions est à votre entiere disposition pour vous livrer à tout moment, sur commande et le nombre de quantite que vous voulez. Merci de faire confiance à ETS BIG-TRANSPORT pour l'evolution de vos chantiers.</p>
+                <a href="#" class="btn">MORE DETAILS</a>
+            </div>
+            <div class="element">
+                <h3>Vente de sables aux conducteurs de camions</h3>
+                <p class="section-text">Nous nous occupons aussi des sables deblais, des carrieres, des chantiers à demolir et nous vendons des materiaux aux chauffeurs ou aux clients selon leurs besoins. Merci de faire confiance à ETS BIG-TRANSPORT, le meilleur de toute la ville de Lomé et ses environs.</p>
+                <a href="#" class="btn">MORE DETAILS</a>
+            </div>
+            <div class="element">
+                <h3>Acquisition et suivi de chantier pour la diaspora</h3>
+                <p class="section-text">ETS BIG-TRANSPORT vous invite, vous qui êtes hors du pays pour la livraison et le suivi des travaux de vos chantiers, à lui confier tous ces besoins auxquels il apporte des solutions, et nous effectuons tout sur le chantier. ETS BIG-TRANSPORT, un partenaire à votre écoute.</p>
+                <a href="#" class="btn">MORE DETAILS</a>
+            </div>
+        </div>
+    </section>
+    <!--FIN SECTION NUMERO 1-->
+
+    <!--DEBUT SECTION NOS SERVICES-->
+
+    <section class="nos-services" id="nos-services">
+        <h2><span class="span">Nos</span> Services</h2>
+        <div class="services">
+            <div class="element">
+                <img src="{% static 'images/sable.jpg' %}" alt="Designing And Building">
+                <br>
+                <p>Fourniture de tout type de sable et gravier dont vous besoins pour une bonne base et evolution de vos chantiers</p>
+                <a href="https://wa.me/message/GP3FPGUQQJPIG1" class="btn">FOURNITURE DE SABLES</a>
+            </div>
+            <div class="element">
+                <img src="{% static 'images/demolition.jpg' %}" alt="Designing And Building">
+                <br>
+                <p>ETS BIG-TRANSPORT pret a vous faire un bon devis pour la demolition de vos batiment dont vous n'avez plus besoin. Nous disposons de tous les equipement pour la demolitions rapide et le degagement des caillasses de vos chantiers.</p>
+                <a href="https://wa.me/message/GP3FPGUQQJPIG1" class="btn">DEMOLITION</a>
+            </div>
+            <div class="element">
+                <img src="{% static 'images/images.jpeg' %}" alt="Designing And Building">
+                <br>
+                <p>Avez-vous besoin des camions pour un service rapide a votre guise, pour un travaux hors pays, pour minimiser vos depenses sur vos chantiers, nous disposons des camions prets pour vous avec des conducteurs qui sont disponibles a tout moment pour vous servir.</p>
+                <a href="https://wa.me/message/GP3FPGUQQJPIG1" class="btn">LOCATION DE CAMIOMS</a>
+            </div>
+            <div class="element">
+                <img src="{% static 'images/section1-i1.jpg' %}" alt="Designing And Building">
+                <br>
+                <p>Avez-vous besoin des engins lourds pour un service rapide a votre guise, pour un travaux hors pays, pour minimiser vos depenses sur vos chantiers, nous disposons des camions prets pour vous avec des conducteurs qui sont disponibles a tout moment pour vous servir.</p>
+                <a href="https://wa.me/message/GP3FPGUQQJPIG1" class="btn">LOCATION D'ENGINS LOURDS</a>
+            </div>
+            <div class="element">
+                <img src="{% static 'images/section1-i1.jpg' %}" alt="Designing And Building">
+                <br>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt maiores accusamus sit est nostrum, possimus nobis, nihil quae excepturi nulla eveniet alias distinctio temporibus laboriosam perspiciatis necessitatibus, ullam suscipit fugit.</p>
+                <a href="https://wa.me/message/GP3FPGUQQJPIG1" class="btn">LOCATION DE CAMIOMS</a>
+            </div>
+            <div class="element">
+                <img src="{% static 'images/section1-i1.jpg' %}" alt="Designing And Building">
+                <br>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt maiores accusamus sit est nostrum, possimus nobis, nihil quae excepturi nulla eveniet alias distinctio temporibus laboriosam perspiciatis necessitatibus, ullam suscipit fugit.</p>
+                <a href="https://wa.me/message/GP3FPGUQQJPIG1" class="btn">LOCATION D'ENGINS LOURDS'</a>
+            </div>
+        </div>
+    </section>
+    
+    <!--FIN SECTION NOS SERVICES-->
+
+    <!--DEBUT SECTION PPRODUITS-->
+
+    <section class="produits" id="voir-plus produits">
+        <h2>Nos <span class="span">Produits</span></h2>
+        <div class="produit">
+            <div class="produit-element">
+                <div class="element">
+                    <img src="{% static 'images/demolition.jpg' }" alt="Designing And Building">
+                    <h3>Designing And Building</h3>
+                    <div class="btn-produit">
+                        <a href="https://wa.me/message/GP3FPGUQQJPIG1" class="btn">COMMANDER</a>
+                        <a href="" class="icons"><img src="{% static 'images/shopping-basket-line.png' %}" alt=""></a>
+                    </div>
+                </div>
+                <div class="element">
+                    <img src="{% static 'images/sable-silteux.jpg' %}" alt="Designing And Building">
+                    <h3>Sable silteux</h3>
+                    <div class="btn-produit">
+                        <a href="https://wa.me/message/GP3FPGUQQJPIG1" class="btn">COMMANDER</a>
+                        <a href="#" class="icons"><img src="{% static 'images/shopping-basket-line.png' %}" alt=""></a>
+                    </div>
+                </div>
+                <div class="element">
+                    <img src="{% static 'images/sable-jaune.jpg' %}" alt="Designing And Building">
+                    <h3>Sable jaune</h3>
+                    <div class="btn-produit">
+                        <a href="https://wa.me/message/GP3FPGUQQJPIG1" class="btn">COMMANDER</a>
+                        <a href="#" class="icons"><img src="{% static 'images/shopping-basket-line.png' %}" alt=""></a>
+                    </div>
+                </div>
+                <div class="element">
+                    <img src="{% static 'images/sable-mer.jpg' %}" alt="Designing And Building">
+                    <h3>Sable de mer</h3>
+                    <div class="btn-produit">
+                        <a href="https://wa.me/message/GP3FPGUQQJPIG1" class="btn">COMMANDER</a>
+                        <a href="#" class="icons"><img src="{% static 'images/shopping-basket-line.png' %}" alt=""></a>
+                    </div>
+                </div>
+            </div>
+            <div class="produit-element">
+                <div class="element">
+                    <img src="{% static 'images/laterite.jpg' %}" alt="Designing And Building">
+                    <h3>Laterite</h3>
+                    <div class="btn-produit">
+                        <a href="https://wa.me/message/GP3FPGUQQJPIG1" class="btn">COMMANDER</a>
+                        <a href="#" class="icons"><img src="{% static 'images/shopping-basket-line.png' %}" alt=""></a>
+                    </div>
+                </div>
+                <div class="element">
+                    <img src="{% static 'images/a1-ramblais-laterite1.jpg' %}" alt="Designing And Building">
+                    <h3>Ramblais laterite</h3>
+                    <div class="btn-produit">
+                        <a href="https://wa.me/message/GP3FPGUQQJPIG1" class="btn">COMMANDER</a>
+                        <a href="#" class="icons"><img src="{% static 'images/shopping-basket-line.png' %}" alt=""></a>
+                    </div>
+                </div>
+                <div class="element">
+                    <img src="{% static 'images/a1-ramblais-laterite.jpg' %}" alt="Designing And Building">
+                    <h3>Ramblais laterite</h3>
+                    <div class="btn-produit">
+                        <a href="https://wa.me/message/GP3FPGUQQJPIG1" class="btn">COMMANDER</a>
+                        <a href="#" class="icons"><img src="{% static 'images/shopping-basket-line.png' %}" alt=""></a>
+                    </div>
+                </div>
+                <div class="element">
+                    <img src="{% static 'images/a1-ramblais-rouge-pure.jpg' %}" alt="Designing And Building">
+                    <h3>Ramblais rouge pure</h3>
+                    <div class="btn-produit">
+                        <a href="https://wa.me/message/GP3FPGUQQJPIG1" class="btn">COMMANDER</a>
+                        <a href="#" class="icons"><img src="{% static 'images/shopping-basket-line.png' %}" alt=""></a>
+                    </div>
+                </div>
+            </div>     
+        </div>
+    </section>
+
+    <!--FIN SECTION PRODUITS-->
+    
+    <!--DEBUT SECTION CONTACTER-NOUS -->
+
+    <section class="contact" id="contact">
+        <h1>Contact-nous</h1>
+        <div class="contact-div">
+            <div class="formulaire">
+                <p>Nous sommes ravis de pouvoir vous aider avec vos projets et vos questions. N'hésitez pas à nous contacter en remplissant le formulaire ci-dessous. Que ce soit pour une demande de devis, des renseignements supplémentaires ou des suggestions, notre équipe vous répondra dans les plus brefs délais.</p>
+                <form class="form1" method="post">
+                    {% csrf_token %}
+                    <input name="name" required type="text" placeholder="Entrer votre nom">
+                    <input name="email" required type="email" placeholder="Email">
+                    <input name="phone" required type="tel" placeholder="Numero de telephone">
+                    <textarea name="message" required placeholder="Message"></textarea>
+                    <button type="submit">ENVOYER</button>
+                </form>                     
+            </div>
+            <div class="img-form">
+                <img src="{% static 'images/section1-i1.jpg' %}" alt="">
+            </div>
+        </div>
+    </section>
+
+    <!--FIN SECTION CONTACTEZ-NOUS -->
+    
+    <!--DEBUT FOOTER-->
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="contact-info">
+                <img src="{% static 'images/phone-fill.svg' %}" alt="">
+                <p>+228 97 86 87 47</p>
+                <img src="{% static 'images/whatsapp-fill.svg' %}" alt="">
+                <p>+228 96 98 68 75</p>
+            </div>
+            <div class="social-media">
+                <a href="https://www.facebook.com/mrgaelshopzone">
+                    <img src="{% static 'images/facebook-circle-fill.svg' %}" alt="Facebook">
+                </a>
+                <a href="https://tiktok.com">
+                    <img src="{% static 'images/tiktok-fill.svg' %}" alt="TikTok">
+                </a>
+                <a href="https://wa.me/message/IKZHBB7EOF7GN1">
+                    <img src="{% static 'images/whatsapp-fill.svg' %}" alt="Whatsapp">
+                </a>
+                <a href="lxolalikokouguel@gmail.com">
+                    <img src="{% static 'images/mail-fill.svg' %}" alt="Mail">
+                </a>
+                <a href="+22896986875">
+                    <img src="{% static 'images/phone-fill.svg' %}" alt="Telephone">
+                </a>
+            </div>
+            <p>ETS BIG-TRANSPORT, Votre satisfaction est notre preoccupation.</p>
+            <p>© Copyright 2024 Tout droit reserver.</p>
+        </div>
+    </footer> 
+
+    <!--fin footer-->
+
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>recherche</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h2>Résultats de la recherche</h2>
+
+<form class="recherche" method="get" action="{% url 'search' %}">
+    <input class="search" name="search" type="search" placeholder="Recherche" value="{{ query }}">
+</form>
+
+<section class="produits" id="voir-plus produits">
+    <h2>Nos <span class="span">Produits</span></h2>
+
+    {% if donnees %}
+        <div class="produit">
+            {% for produit in donnees %}
+                <div class="element">
+                    <img src="{{ produit.image.url }}" alt="{{ produit.name }}">
+                    <p>{{ produit.image.url }}</p>
+                    <h3>{{ produit.name }}</h3>
+                    <p>{{ produit.description }}</p>
+                    <div class="btn-produit">
+                        <a href="https://wa.me/message/GP3FPGUQQJPIG1" class="btn">COMMANDER</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>Aucune recherche ne correspond à "{{ query }}"</p>
+    {% endif %}
+</section>
+</body>
+</html>

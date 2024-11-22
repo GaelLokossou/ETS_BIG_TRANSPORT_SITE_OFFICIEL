@@ -1,0 +1,594 @@
+/*  rendre la page web a zero pour nous permettre de defnir nos propres marges*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.logo {
+    font-size: 1.25rem; /* équivalent à 20px */
+}
+
+.nav-bar{
+    background-color: #3e464b;
+    padding: 10px 5% 10px 5%;
+    height: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    color: white;
+    text-transform: uppercase;
+    position: fixed;
+}
+
+.logo{
+    color: rgb(255, 196, 0);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.nav-bar ul .logo {
+    margin-right: 5vw;
+}
+
+.nav-bar ul {
+    list-style: none;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    padding-top: 20px;
+}
+
+.nav-bar ul .logo{
+    margin-right: 100px;
+}
+
+.nav-bar .menu{
+    margin-right: 25px;    
+}
+
+.menu a{
+    text-decoration: none;
+    cursor: pointer;
+    color: white;
+}
+
+.menu a:hover{
+    color: rgb(255, 196, 0);
+}
+
+form .search{
+    height: 32px;
+    margin-top: 20px;
+    padding: 5px 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    color: white;
+    background-color: #3e464b;
+    border: none;
+    outline: none; /* Pour désactiver la ligne blanche par défaut */
+    caret-color: white;
+}
+
+.recherche a img{
+        height: 26px; /* Ajuste la hauteur de l'icône pour correspondre à la barre de recherche */
+        vertical-align: middle; /* Aligne l'image au milieu verticalement */
+        cursor: pointer;
+        padding-right: 30px;
+        margin-top: 20px;
+        margin-left: 40px;
+}
+
+.section1 {
+    height: 90vh; /* Hauteur de la section */
+    background-image: url('../images/section1-i1.jpg'); /* Chemin vers l'image */
+    background-size: cover;
+    background-position: center;
+    color: white; /* Couleur du texte */
+    padding: 20px;
+    display: flex; /* Utiliser Flexbox */
+    background-color: #3e464b;
+}
+
+
+.section1 > * {
+    max-width: 50%; /* Limite la largeur des éléments à 50% */
+    flex-shrink: 0; /* Empêche la réduction de la taille des éléments */
+}
+
+.left-content {
+    display: flex; /* Active le modèle de flexbox pour le contenu */
+    flex-direction: column; /* Aligne les enfants en colonne */
+    justify-content: center; /* Centre verticalement le contenu */
+    align-items: flex-start; /* Aligne le contenu à gauche */
+}
+
+.content {
+    z-index: 2; /* Pour que le contenu soit au-dessus de l'image */
+}
+
+.content{
+    margin-top: 150px;
+    margin-left: 100px;
+}
+
+.section1 div h1{
+    padding-bottom: 30px;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.section1 div p{
+    padding-bottom: 15px;
+    font-size: 24px;
+    font-weight: 450;
+}
+
+.content button{
+    height: 36px;
+    width: 120px;
+    background-color: rgb(255, 196, 0);
+    outline: none;
+    border: white;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    padding-bottom: 7px;
+    border-radius: 5px;
+}
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+    color: white;
+    border: none;
+    font-size: 35px;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.left {
+    left: 20px;
+}
+
+.right {
+    right: 20px;
+}
+
+.arrow:hover {
+    background-color: rgba(0, 0, 0, 0.8); /* Change la couleur au survol */
+}
+
+/*SECTION - 2*/
+
+.section2 {
+    background-color: #f9f9f9;
+    padding: 40px 0;
+}
+
+.content-1 {
+    display: flex;
+    justify-content: space-around;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.element {
+    width: 30%;
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.element:hover {
+    transform: translateY(-10px);
+}
+
+.element img {
+    width: 60px;
+    height: 60px;
+}
+
+.element h3 {
+    margin: 15px 0;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.element p {
+    font-size: 0.9rem;
+    color: #777;
+}
+
+.btn {
+    display: inline-block;
+    background-color: rgb(255, 196, 0);;
+    height: 40px;
+    width: 140px;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+    padding-top: 8px;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background-color: rgb(0, 128, 255);
+}
+
+/* Services Section */
+.nos-services {
+    background-color: #e0e0e0;
+    padding: 50px 0;
+}
+
+.nos-services h2{
+    text-align: center;
+    font-size: 50px;
+    text-transform: uppercase;
+    padding-bottom: 20px;
+    color: rgb(255, 196, 0);
+}
+
+.span{
+    color: #000;
+}
+
+.services {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.nos-services .element{
+    width: 30%;
+    margin-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.nos-services .btn {
+    display: inline-block;
+    background-color: rgb(255, 196, 0);;
+    height: 40px;
+    width: 280px;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+    padding-top: 8px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.nos-services .btn:hover {
+    background-color: rgb(0, 128, 255);
+}
+
+.nos-services .element img{
+    width: 300px;
+    height: 200px;
+    margin-bottom: 10px;
+}
+
+.service h3 {
+    margin-top: 15px;
+    color: #007BFF;
+}
+
+/* Produits Section */
+.produits {
+    padding: 50px 0;
+    background-color: #3e464b;
+}
+
+.produits h2{
+    text-align: center;
+    font-size: 50px;
+    text-transform: uppercase;
+    padding-bottom: 20px;
+    color: rgb(255, 196, 0);
+}
+
+.span{
+    color: #000;
+}
+
+.produits .element{
+    background-color: rgb(196, 191, 176);
+    margin-bottom: 20px;
+    border-radius: 5px;
+    width: 320px;
+    height: 320px;
+    margin-right: 20px;
+}
+
+.produit-element{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.produits .element img{
+    width: 280px;
+    height: 200px;
+}
+
+.btn-produit .icons img{
+    height: 35px; /* Ajuste la hauteur de l'icône pour correspondre à la barre de recherche */
+    width: 35px;
+    vertical-align: middle; /* Aligne l'image au milieu verticalement */
+    cursor: pointer;
+    margin-left: 80px;
+}
+
+.btn-produit .btn{
+    border-radius: 5px;
+    height: 30px;
+    width: 100px;
+    font-size: 10px;
+}
+
+.produit h3{
+    color: black;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.produit {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    /*max-width: 1200px;*/
+    margin: 0 auto;
+    padding-left: 20px;
+}
+
+.produit .element{
+    background-color: #fff;
+}
+.article {
+    width: 20%;
+    text-align: center;
+    padding: 20px;
+}
+
+.article img {
+    max-width: 100%;
+    height: auto;
+}
+
+.article h3 {
+    margin-top: 10px;
+    color: #333;
+}
+
+.contact-div .img-form img{
+    width: 600px;
+    height: 400px;
+}
+.contact {
+    padding: 50px;
+    background-color: #f8f9fa; /* couleur de fond */
+}
+
+.contact h1{
+    color: rgb(255, 196, 0);
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+.contact-div {
+    display: flex; /* utilise flexbox pour aligner les éléments côte à côte */
+    justify-content: space-between; /* espace entre les divs */
+    align-items: flex-start; /* aligne les éléments en haut */
+}
+
+
+/* Style La recherche provenant de la barre de recherche */
+
+.recherche {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.recherche .search {
+    width: 50%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.produit {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.element {
+    flex: 1 1 calc(25% - 20px); /* 4 éléments par ligne */
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    padding: 15px;
+    text-align: center;
+}
+
+.element img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+
+/* Style du conteneur du formulaire */
+.form1 {
+    max-width: 600px;
+    max-height: auto;
+}
+
+/* Style des champs de saisie */
+.form1 input[type="text"],
+.form1 input[type="email"],
+.form1 input[type="tel"],
+.form1 textarea {
+    width: 100%; /* Champ prend tout l'espace disponible */
+    padding: 10px; /* Espace intérieur */
+    margin-bottom: 15px; /* Espacement entre les champs */
+    border: 1px solid #ced4da; /* Bordure grise */
+    border-radius: 5px; /* Coins arrondis */
+    font-size: 16px; /* Taille du texte */
+    font-family: Arial, sans-serif; /* Police par défaut */
+    caret-color: rgb(255, 196, 0);
+}
+
+/* Style du textarea */
+.form1 textarea {
+    height: 100px; /* Hauteur du textarea */
+    resize: none; /* Désactiver le redimensionnement */
+    caret-color: rgb(255, 196, 0);
+}
+
+/* Style du bouton */
+.form1 button {
+    width: 100%; /* Le bouton prend toute la largeur */
+    padding: 10px;
+    background-color: rgb(255, 196, 0); /* Couleur bleu Bootstrap */
+    color: white; /* Texte en blanc */
+    border: none; /* Sans bordure */
+    border-radius: 5px; /* Coins arrondis */
+    font-size: 18px;
+    cursor: pointer; /* Curseur pointeur au survol */
+    transition: background-color 0.3s ease; /* Animation au survol */
+}
+
+/* Effet au survol du bouton */
+.form1 button:hover {
+    background-color: #007BFF; /* Bleu foncé au survol */
+}
+
+
+.formulaire {
+    flex: 1; /* prend tout l'espace disponible */
+    margin-right: 20px; /* espace entre le formulaire et l'image */
+}
+
+.img-form {
+    flex: 1; /* prend tout l'espace disponible */
+}
+
+.img-form img {
+    max-width: 100%; /* s'assure que l'image ne dépasse pas la largeur de son conteneur */
+    height: auto; /* maintient le ratio de l'image */
+}
+
+.form-row {
+    display: flex; /* Utilise flexbox pour la ligne */
+    flex-direction: column; /* Aligne les éléments en colonne */
+}
+
+.form-group {
+    margin-bottom: 15px; /* Ajoute de l'espace entre les champs */
+}
+
+.btn {
+    margin-top: 10px; /* Ajoute un espace au-dessus du bouton */
+}
+
+.form-control:focus {
+    border-color: rgb(255, 196, 0); /* Change la couleur de la bordure en jaune */
+    box-shadow: 0 0 5px rgb(255, 196, 0); /* Ajoute un effet d'ombre pour plus de visibilité */
+}
+
+.footer {
+    background-color: #3e464b;
+    color: white;
+    text-align: center;
+    padding-top: 20px;
+    font-weight: bold;
+    height: 80px;
+}
+
+.footer-content {
+    display: flex; /* Utilise flexbox pour organiser le contenu */
+    flex-wrap: wrap;
+    justify-content: space-between; /* Espace entre les éléments */
+    align-items: center; /* Aligne les éléments au centre */
+
+}
+
+.contact-info{
+    display: flex; /* Utilise flexbox pour organiser le contenu */
+    flex-wrap: wrap;
+    justify-content: space-between; /* Espace entre les éléments */
+    align-items: center; /* Aligne les éléments au centre */
+}
+
+.contact-info p{
+    margin-right: 10px;
+    padding-bottom: 10px;
+}
+
+.contact-info img{
+    height: 26px;
+    border-radius: 50%;
+}
+
+.contact-info img{
+    margin-bottom: 12px;
+}
+
+.social-media a img{
+    margin-bottom: 12px;
+}
+
+.social-media a {
+    margin: 0 10px; /* Espacement horizontal entre les icônes */
+}
+
+.social-media img {
+    height: 26px;
+    border-radius: 50%;
+}
+
+.footer-content p{
+    color: #fff;
+    margin-top: 11px;
+    padding-bottom: 10px;
+}
+
+.footer-content p:hover{
+    color: rgb(255, 196, 0);
+}
+
+@media (max-width: 768px) {
+    .nav-bar {
+        flex-direction: column;
+        height: auto;
+    }
+    .nav-bar ul {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .nav-bar ul .logo {
+        margin-right: 0;
+    }
+}
