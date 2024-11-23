@@ -8,8 +8,7 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <h2>Résultats de la recherche</h2>
-
+<h2 class="search-succes">Résultats de la recherche</h2>
 <form class="recherche" method="get" action="{% url 'search' %}">
     <input class="search" name="search" type="search" placeholder="Recherche" value="{{ query }}">
 </form>
@@ -22,7 +21,6 @@
             {% for produit in donnees %}
                 <div class="element">
                     <img src="{{ produit.image.url }}" alt="{{ produit.name }}">
-                    <p>{{ produit.image.url }}</p>
                     <h3>{{ produit.name }}</h3>
                     <p>{{ produit.description }}</p>
                     <div class="btn-produit">
@@ -32,7 +30,7 @@
             {% endfor %}
         </div>
     {% else %}
-        <p>Aucune recherche ne correspond à "{{ query }}"</p>
+    <h1 class="search-erreur">Aucune recherche ne correspond à "{{ query }}"</h1>
     {% endif %}
 </section>
 </body>

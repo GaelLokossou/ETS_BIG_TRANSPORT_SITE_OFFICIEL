@@ -44,6 +44,7 @@
     align-items: center;
     font-weight: bold;
     padding-top: 20px;
+    margin-bottom: 12px;
 }
 
 .nav-bar ul .logo{
@@ -66,7 +67,7 @@
 
 form .search{
     height: 32px;
-    margin-top: 20px;
+    margin-top: 30px;
     padding: 5px 15px;
     border-radius: 5px;
     font-size: 16px;
@@ -82,7 +83,7 @@ form .search{
         vertical-align: middle; /* Aligne l'image au milieu verticalement */
         cursor: pointer;
         padding-right: 30px;
-        margin-top: 20px;
+        margin-top: 30px;
         margin-left: 40px;
 }
 
@@ -173,7 +174,8 @@ form .search{
 
 .section2 {
     background-color: #f9f9f9;
-    padding: 40px 0;
+    padding-top: 60px;
+    padding-bottom: 60px;
 }
 
 .content-1 {
@@ -183,10 +185,11 @@ form .search{
     max-width: 1200px;
 }
 
-.element {
+.content-1 .element {
     width: 30%;
+    height: 300px;
     text-align: center;
-    padding: 20px;
+    margin: 20px;
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
@@ -241,6 +244,16 @@ form .search{
     text-transform: uppercase;
     padding-bottom: 20px;
     color: rgb(255, 196, 0);
+}
+
+.services .element{
+    width: 30%;
+    height: 400px;
+    text-align: center;
+    margin: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
 }
 
 .span{
@@ -313,7 +326,7 @@ form .search{
     margin-bottom: 20px;
     border-radius: 5px;
     width: 320px;
-    height: 320px;
+    height: 340px;
     margin-right: 20px;
 }
 
@@ -402,6 +415,17 @@ form .search{
 
 
 /* Style La recherche provenant de la barre de recherche */
+.search-succes{
+    text-align: center;
+    font-size: 32px;
+    color: rgb(255, 196, 0);
+}
+
+.search-erreur{
+    text-align: center;
+    font-size: 32px;
+    color: white;
+}
 
 .recherche {
     display: flex;
@@ -424,16 +448,17 @@ form .search{
 }
 
 .element {
-    flex: 1 1 calc(25% - 20px); /* 4 éléments par ligne */
     border: 1px solid #dee2e6;
     border-radius: 5px;
     padding: 15px;
     text-align: center;
+    height: 400px;
+    width: 400px;
 }
 
 .element img {
-    max-width: 100%;
-    height: auto;
+    width: 280px;
+    height: 200px;
     margin-bottom: 10px;
 }
 
@@ -551,6 +576,9 @@ form .search{
     border-radius: 50%;
 }
 
+.footer-content img{
+    margin-top: 16px;
+}
 .contact-info img{
     margin-bottom: 12px;
 }
