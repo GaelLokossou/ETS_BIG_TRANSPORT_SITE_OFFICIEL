@@ -22,6 +22,7 @@
     color: white;
     text-transform: uppercase;
     position: fixed;
+    z-index: 100;
 }
 
 .logo{
@@ -580,9 +581,6 @@ form .search{
     border-radius: 50%;
 }
 
-.footer-content img{
-    margin-top: 16px;
-}
 .contact-info img{
     margin-bottom: 12px;
 }
