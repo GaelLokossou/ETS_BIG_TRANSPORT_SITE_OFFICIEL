@@ -90,7 +90,7 @@ form .search{
 
 .section1 {
     height: 90vh; /* Hauteur de la section */
-    background-image: url('../images/chargement_carriere.mp4'); /* Chemin vers l'image */
+    background-image: url('../images/section1-i1.jpg'); /* Chemin vers l'image */
     background-size: cover;
     background-position: center;
     color: white; /* Couleur du texte */

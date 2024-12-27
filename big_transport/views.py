@@ -1,6 +1,7 @@
 from django.shortcuts import redirect, render
 from django.contrib import messages
 from big_transport_app.models import ContacterNous, Produits
+from django.core.mail import send_mail
 
 def index(request):
     if request.method == 'POST':
@@ -16,6 +17,14 @@ def index(request):
             phone=phone,
             message=message
         )
+
+        # Composition de l'email
+        subject = f"Nouveau message de {name}"
+        email_message = f"De: {name}.\nNumero de telephone : {phone}.\nEmail : <{email}>.\n\n{message}"
+        from_email = 'lxolalikokouguek@gmail.com'
+        recipient_list = ['lxolalikokouguel@gmail.com']
+        # Envoi de l'email
+        send_mail(subject, email_message, from_email, recipient_list)
 
         messages.success(request, "Votre message a été envoyé avec succès!")
         return redirect('index')
