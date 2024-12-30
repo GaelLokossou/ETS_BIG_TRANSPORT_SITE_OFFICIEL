@@ -1,5 +1,5 @@
 from big_transport import settings
-from .views import index, search
+from .views import commander, index, search
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls.static import static
@@ -8,6 +8,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
     path('search/', search, name='search'),
+    path('commander/', commander, name='commander')
 ]
 
 # Ajoutez cette ligne pour servir les fichiers médias

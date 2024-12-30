@@ -16,3 +16,35 @@ class Produits(models.Model):
 
     def __str__(self):
         return self.name
+    
+
+class Commander(models.Model):
+    # Attributs pour le modèle
+    name = models.CharField(max_length=100, verbose_name="Nom")
+    lieu = models.CharField(max_length=200, verbose_name="Lieu / Quartier")
+    phone = models.CharField(max_length=30, verbose_name="Numéro de téléphone")
+    
+    # Pour le choix principal : type de camion ou nombre de cubage
+    CHOIX_PRINCIPAL = [
+        ('type_camion', 'Type de camion'),
+        ('nombre_cubage', 'Nombre de cubage'),
+    ]
+    choix_principal = models.CharField(max_length=20, choices=CHOIX_PRINCIPAL, verbose_name="Choix principal")
+
+    # Détails supplémentaires
+    camion_type = models.CharField(
+        max_length=50, 
+        blank=True, 
+        null=True, 
+        verbose_name="Type de camion",
+        help_text="Spécifier si le choix principal est 'Type de camion'"
+    )
+    nombre_cubage = models.PositiveIntegerField(
+        blank=True, 
+        null=True, 
+        verbose_name="Nombre de cubage",
+        help_text="Spécifier si le choix principal est 'Nombre de cubage'"
+    )
+
+    def __str__(self):
+        return f"Commande de {self.name}"
