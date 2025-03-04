@@ -3,10 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ets-big-transport</title>
+    <title>ETABLISSEMENT BIG-TRANSPORT</title>
     <!--bootstrap-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- google fonts preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- style sheets and font icons  -->
+    <link rel="stylesheet" href="{% static 'css/stylepro.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script>
+        feather.replace();
+    </script>
 </head>
 <body>
     <!--DEBUT MENU-->
@@ -20,292 +33,539 @@
         </ul>
         <form class="recherche" method="get" action="{% url 'search' %}">
             <input class="search" name="search" type="search" placeholder="Recherche">
-            <a href="https://wa.me/message/GP3FPGUQQJPIG1"><img src="{% static 'images/shopping-cart-fill.svg' %}" alt="shopping"></a>
+            <a href="https://wa.me/+22896986875"><img src="{% static 'images/shopping-cart-fill.svg' %}" alt="shopping"></a>
         </form>
     </nav>
-
     <!--FIN MENU-->
-
-    <!--DEBUT SECTION NUMERO 1-->
-
-    <section class="section1" id="a-propos">
-        <button class="arrow left" id="prevBtn">&#10094;</button>
-        <div class="content">
-            <h1 id="sectionTitle">ETS BIG-TRANSPORT</h1>
-            <p id="sectionText">Specialement dans la fourniture de materiaux essentiels pour vos projet de construction, nous vous offrons une gamme de produits de haute qualite.</p>
-            <a href="#"><button class="btn">VOIR PLUS</button></a>
-        </div>
-        <button class="arrow right" id="nextBtn">&#10095;</button>
-    </section>
-    <section class="section2">
-        <div class="content-1">
-            <div class="element">
-                <h3>Vente des materiels de construction</h3>
-                <p class="section-text">ETS BIG-TRANSPORT pour la livraison de materiaux de constructions est à votre entiere disposition pour vous livrer à tout moment, sur commande et le nombre de quantite que vous voulez. Merci de faire confiance à ETS BIG-TRANSPORT pour l'evolution de vos chantiers.</p>
-                <a href="#" class="btn1">MORE DETAILS</a>
-            </div>
-            <div class="element">
-                <h3>Vente de sables aux conducteurs de camions</h3>
-                <p class="section-text">Nous nous occupons aussi des sables deblais, des carrieres, des chantiers à demolir et nous vendons des materiaux aux chauffeurs ou aux clients selon leurs besoins. Merci de faire confiance à ETS BIG-TRANSPORT, le meilleur de toute la ville de Lomé et ses environs.</p>
-                <a href="#" class="btn1">MORE DETAILS</a>
-            </div>
-            <div class="element">
-                <h3>Acquisition et suivi de chantier pour la diaspora</h3>
-                <p class="section-text">ETS BIG-TRANSPORT vous invite, vous qui êtes hors du pays pour la livraison et le suivi des travaux de vos chantiers, à lui confier tous ces besoins auxquels il apporte des solutions, et nous effectuons tout sur le chantier. ETS BIG-TRANSPORT, un partenaire à votre écoute.</p>
-                <a href="#" class="btn1">MORE DETAILS</a>
-            </div>
-        </div>
-    </section>
-    <!--FIN SECTION NUMERO 1-->
-
-    <!--DEBUT SECTION NOS SERVICES-->
-
-    <section class="nos-services" id="nos-services">
-        <h2><span class="span">Nos</span> Services</h2>
-        <div class="services">
-            <div class="element">
-                <img src="{% static 'images/sable.jpg' %}" alt="Designing And Building">
-                <br>
-                <p>Fourniture de tout type de sable et gravier dont vous besoins pour une bonne base et evolution de vos chantiers</p>
-                <a href="https://wa.me/message/GP3FPGUQQJPIG1" class="btn">FOURNITURE DE SABLES</a>
-            </div>
-            <div class="element">
-                <img src="{% static 'images/demolition.jpg' %}" alt="Designing And Building">
-                <br>
-                <p>Pour la demolition des batiments. Nous disposons de tous les equipement pour la demolitions rapide et le degagement des caillasses de vos chantiers.</p>
-                <a href="https://wa.me/message/GP3FPGUQQJPIG1" class="btn">DEMOLITION</a>
-            </div>
-            <div class="element">
-                <img src="{% static 'images/images.jpeg' %}" alt="Designing And Building">
-                <br>
-                <p>Avez-vous besoin des camions pour un service rapide, minimiser vos depenses sur vos chantiers ? Nous disposons des camions avec des conducteurs qui sont disponibles.</p>
-                <a href="https://wa.me/message/GP3FPGUQQJPIG1" class="btn">LOCATION DE CAMIOMS</a>
-            </div>
-            <div class="element">
-                <img src="{% static 'images/section1-i1.jpg' %}" alt="Designing And Building">
-                <br>
-                <p>Avez-vous besoin des engins lourds pour un service rapide, minimiser vos depenses sur vos chantiers ? Nous disposons des camions avec des conducteurs qui sont disponibles.</p>
-                <a href="https://wa.me/message/GP3FPGUQQJPIG1" class="btn">LOCATION D'ENGINS LOURDS</a>
-            </div>
-            <div class="element">
-                <img src="{% static 'images/section1-i1.jpg' %}" alt="Designing And Building">
-                <br>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt maiores accusamus sit est nostrum, possimus nobis, nihil quae excepturi nulla eveniet alias distinctio.</p>
-                <a href="https://wa.me/message/GP3FPGUQQJPIG1" class="btn">LOCATION DE CAMIOMS</a>
-            </div>
-            <div class="element">
-                <img src="{% static 'images/section1-i1.jpg' %}" alt="Designing And Building">
-                <br>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt maiores accusamus sit est nostrum, possimus nobis, nihil quae excepturi nulla eveniet alias distinctio.</p>
-                <a href="https://wa.me/message/GP3FPGUQQJPIG1" class="btn">LOCATION D'ENGINS LOURDS</a>
+    <!-- start banner slider -->
+    <section class="p-0">
+        <div class="swiper md-h-600px sm-h-900px swiper-number-pagination-style-01 magic-cursor drag-cursor" data-slider-options='{ "slidesPerView": 1, "loop": true, "pagination": { "el": ".swiper-number", "clickable": true }, "navigation": { "nextEl": ".slider-one-slide-next-1", "prevEl": ".slider-one-slide-prev-1" }, "autoplay": { "delay": 4000, "disableOnInteraction": false },  "keyboard": { "enabled": true, "onlyInViewport": true }, "effect": "slide" }' data-number-pagination="1">
+            <div class="swiper-wrapper">
+                <!-- start slider item -->
+                {% for annonce in annonces %}
+                <div class="swiper-slide cover-background" style="background-image: url('{% if annonce.photos.first %}{{ annonce.photos.first.image.url }}{% else %}/static/images/default-image.jpg{% endif %}'); height: 500px;"> 
+                    <div class="container h-100 mt-10">
+                        <div class="row align-items-center h-100">
+                            <div class="col-md-8 position-relative text-white" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
+                                <div class="alt-font fs-110 lg-fs-90 lh-90 lg-lh-80 mb-45px sm-mb-25px w-80 xs-w-100 ls-minus-2px">
+                                    {{ annonce.titre|default:"Titre indisponible" }}
+                                </div>  
+                                <a href="{% url 'commander' %}" class="btn btn-white btn-large border-1 btn-round-edge btn-box-shadow me-15px xs-mt-10px xs-mb-10px">Ajouter au panier</a>
+                                <a href="#" class="btn btn-transparent-white-light border-1 btn-large btn-round-edge fw-500 xs-mt-10px xs-mb-10px">Voir details</a>
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="position-absolute col-xxl-5 col-lg-6 right-0px bottom-0px pt-30px pb-20px ps-40px pe-40px lg-p-35px d-none d-lg-inline-block bg-white border-radius-left-8px" data-anime='{ "translateX": [50, 0], "translateY": [0, 0], "opacity": [0,1], "duration": 600, "delay": 300, "staggervalue": 300, "easing": "easeOutQuad" }'>
+                        <div class="row justify-content-center">
+                            <div class="col-xl-5 ps-35px lg-ps-15px text-center text-xl-start">
+                                <span class="text-dark-gray fw-500 mb-5px d-block alt-font">PRIX PAR METTRE CUBE : </span>
+                                <h4 class="text-dark-gray fw-700 alt-font mb-0 ls-minus-1px">
+                                    {{ annonce.prix|default:0 }} FCFA / m<sup>3</sup>
+                                </h4>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+                {% endfor %}
+                <!-- end slider item -->
             </div>
         </div>
     </section>
-    
-    <!--FIN SECTION NOS SERVICES-->
-
-    <!--DEBUT SECTION PPRODUITS-->
-
-    <section class="produits" id="produits-element">
-        <h2>Nos <span class="span">Produits</span></h2>
-        <div class="produit">
-            <div class="produit-element">
-                <div class="element">
-                    <img src="{% static 'images/laterite.jpg' }" alt="Designing And Building">
-                    <h3>Designing And Building</h3>
-                    <div class="btn-produit">
-                        <a href="{% url 'commander' %}" class="btn">COMMANDER</a>
-                        <a href="" class="icons"><img src="{% static 'images/shopping-basket-line.png' %}" alt=""></a>
+    <!-- end banner slider -->
+    <!-- start section -->
+    <section>
+        <div class="container">
+            <div class="row align-items-start align-items-center justify-content-center">
+                <div class="col-lg-6 md-mb-50px position-relative" data-anime='{ "effect": "slide", "color": "#262b35", "direction":"lr", "easing": "easeOutQuad", "delay":50}'>
+                    <figure class="position-relative mb-0 overflow-hidden border-radius-6px">
+                        <figcaption class="position-absolute border-radius-left-8px bg-base-color right-0px bottom-0px p-45px last-paragraph-no-margin">
+                            <i class="feather icon-feather-home icon-medium text-white mb-15px d-block"></i>
+                            <h4 class="alt-font fw-700 text-white mb-0 d-block">258,952+</h4>
+                            <p class="text-white">Matériaux à vendre</p>
+                        </figcaption>
+                    </figure>
+                </div>
+                <div class="col-xl-5 offset-xl-1 col-lg-6" data-anime='{ "opacity": [0,1], "duration": 1200, "delay": 100, "staggervalue": 150, "easing": "easeOutQuad" }'>
+                    <span class="fs-20 d-inline-block mb-15px text-base-color">Votre partenaire en matériaux de construction et transport</span>
+                    <h2 class="alt-font fw-500 text-dark-gray ls-minus-1px shadow-none sm-w-85" data-shadow-animation="true" data-animation-delay="700">Nous vous fournissons les matériaux essentiels pour vos chantiers : <span class="fw-700 text-highlight">sable, gravier, briques et bien plus encore.<span class="bg-base-color h-10px bottom-10px opacity-3 separator-animation"></span></span></h2>
+                    <p class="w-80 md-w-100">Besoin d’un camion pour la livraison ? Nous proposons un service de location fiable et adapté à vos besoins.
+                        Faites confiance à notre expertise pour un approvisionnement rapide et de qualité.</p>
+                    <div class="mb-35px">
+                        <!-- start features box item -->
+                        <div class="icon-with-text-style-08 mb-10px">
+                            <div class="feature-box feature-box-left-icon-middle overflow-hidden">
+                                <div class="feature-box-icon feature-box-icon-rounded w-40px h-40px bg-base-color-transparent rounded-circle me-15px">
+                                    <i class="fa-solid fa-check fs-14 text-base-color"></i>
+                                </div>
+                                <div class="feature-box-content">
+                                    <span class="text-dark-gray">Plus de 3 ans d'expérience.</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end features box item -->
+                        <!-- start features box item -->
+                        <div class="icon-with-text-style-08">
+                            <div class="feature-box feature-box-left-icon-middle overflow-hidden">
+                                <div class="feature-box-icon feature-box-icon-rounded w-40px h-40px bg-base-color-transparent rounded-circle me-15px">
+                                    <i class="fa-solid fa-check fs-14 text-base-color"></i>
+                                </div>
+                                <div class="feature-box-content">
+                                    <span class="text-dark-gray">Plus de 320 personnes font confiance à notre société.</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end features box item -->
+                    </div>
+                    <div class="d-inline-block">
+                        <a href="#" class="btn btn-dark-gray btn-medium btn-round-edge me-25px">A propos de nous</a>
+                        <a href="#" class="btn btn-large btn-link btn-hover-animation-switch text-dark-gray p-0">
+                            <span>
+                                <span class="btn-text">Trouver des matériaux.</span>
+                                <span class="btn-icon"><i class="feather icon-feather-arrow-right"></i></span>
+                                <span class="btn-icon"><i class="feather icon-feather-arrow-right"></i></span>
+                            </span>
+                        </a>
                     </div>
                 </div>
-                <div class="element">
-                    <img src="{% static 'images/sable-silteux.jpg' %}" alt="Designing And Building">
-                    <h3>Sable silteux</h3>
-                    <div class="btn-produit">
-                        <a href="https://wa.me/message/GP3FPGUQQJPIG1" class="btn">COMMANDER</a>
-                        <a href="#" class="icons"><img src="{% static 'images/shopping-basket-line.png' %}" alt=""></a>
-                    </div>
-                </div>
-                <div class="element">
-                    <img src="{% static 'images/sable-jaune.jpg' %}" alt="Designing And Building">
-                    <h3>Sable jaune</h3>
-                    <div class="btn-produit">
-                        <a href="https://wa.me/message/GP3FPGUQQJPIG1" class="btn">COMMANDER</a>
-                        <a href="#" class="icons"><img src="{% static 'images/shopping-basket-line.png' %}" alt=""></a>
-                    </div>
-                </div>
-                <div class="element">
-                    <img src="{% static 'images/sable-mer.jpg' %}" alt="Designing And Building">
-                    <h3>Sable de mer</h3>
-                    <div class="btn-produit">
-                        <a href="https://wa.me/message/GP3FPGUQQJPIG1" class="btn">COMMANDER</a>
-                        <a href="#" class="icons"><img src="{% static 'images/shopping-basket-line.png' %}" alt=""></a>
-                    </div>
-                </div>
-            </div>
-            <div class="produit-element">
-                <div class="element">
-                    <img src="{% static 'images/laterite.jpg' %}" alt="Designing And Building">
-                    <h3>Laterite</h3>
-                    <div class="btn-produit">
-                        <a href="https://wa.me/message/GP3FPGUQQJPIG1" class="btn">COMMANDER</a>
-                        <a href="#" class="icons"><img src="{% static 'images/shopping-basket-line.png' %}" alt=""></a>
-                    </div>
-                </div>
-                <div class="element">
-                    <img src="{% static 'images/a1-ramblais-laterite1.jpg' %}" alt="Designing And Building">
-                    <h3>Ramblais laterite</h3>
-                    <div class="btn-produit">
-                        <a href="https://wa.me/message/GP3FPGUQQJPIG1" class="btn">COMMANDER</a>
-                        <a href="#" class="icons"><img src="{% static 'images/shopping-basket-line.png' %}" alt=""></a>
-                    </div>
-                </div>
-                <div class="element">
-                    <img src="{% static 'images/a1-ramblais-laterite.jpg' %}" alt="Designing And Building">
-                    <h3>Ramblais laterite</h3>
-                    <div class="btn-produit">
-                        <a href="https://wa.me/message/GP3FPGUQQJPIG1" class="btn">COMMANDER</a>
-                        <a href="#" class="icons"><img src="{% static 'images/shopping-basket-line.png' %}" alt=""></a>
-                    </div>
-                </div>
-                <div class="element">
-                    <img src="{% static 'images/a1-ramblais-rouge-pure.jpg' %}" alt="Designing And Building">
-                    <h3>Ramblais rouge pure</h3>
-                    <div class="btn-produit">
-                        <a href="https://wa.me/message/GP3FPGUQQJPIG1" class="btn">COMMANDER</a>
-                        <a href="#" class="icons"><img src="{% static 'images/shopping-basket-line.png' %}" alt=""></a>
-                    </div>
-                </div>
-                <div class="element">
-                    <img src="{% static 'images/a1-ramblais-laterite.jpg' %}" alt="Designing And Building">
-                    <h3>Ramblais laterite</h3>
-                    <div class="btn-produit">
-                        <a href="https://wa.me/message/GP3FPGUQQJPIG1" class="btn">COMMANDER</a>
-                        <a href="#" class="icons"><img src="{% static 'images/shopping-basket-line.png' %}" alt=""></a>
-                    </div>
-                </div>
-                <div class="element">
-                    <img src="{% static 'images/a1-ramblais-rouge-pure.jpg' %}" alt="Designing And Building">
-                    <h3>Ramblais rouge pure</h3>
-                    <div class="btn-produit">
-                        <a href="https://wa.me/message/GP3FPGUQQJPIG1" class="btn">COMMANDER</a>
-                        <a href="#" class="icons"><img src="{% static 'images/shopping-basket-line.png' %}" alt=""></a>
-                    </div>
-                </div>
-                <div class="element">
-                    <img src="{% static 'images/a1-ramblais-laterite.jpg' %}" alt="Designing And Building">
-                    <h3>Ramblais laterite</h3>
-                    <div class="btn-produit">
-                        <a href="https://wa.me/message/GP3FPGUQQJPIG1" class="btn">COMMANDER</a>
-                        <a href="#" class="icons"><img src="{% static 'images/shopping-basket-line.png' %}" alt=""></a>
-                    </div>
-                </div>
-                <div class="element">
-                    <img src="{% static 'images/a1-ramblais-rouge-pure.jpg' %}" alt="Designing And Building">
-                    <h3>Ramblais rouge pure</h3>
-                    <div class="btn-produit">
-                        <a href="https://wa.me/22897868747?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9%20par%20l'article%20%3A%20RAMBLAIS%20LATERITE" class="btn" target="_blank">COMMANDER SUR WHATSAPP</a>
-                        <a href="#" class="icons"><img src="{% static 'images/shopping-basket-line.png' %}" alt=""></a>
-                    </div>
-                </div>
-                <div class="element">
-                    <img src="{% static 'images/a1-ramblais-laterite.jpg' %}" alt="Designing And Building">
-                    <h3>Ramblais laterite</h3>
-                    <div class="btn-produit">
-                        <a href="https://wa.me/message/GP3FPGUQQJPIG1" class="btn">COMMANDER</a>
-                        <a href="#" class="icons"><img src="{% static 'images/shopping-basket-line.png' %}" alt=""></a>
-                    </div>
-                </div>
-                <div class="element">
-                    <img src="{% static 'images/a1-ramblais-rouge-pure.jpg' %}" alt="Designing And Building">
-                    <h3>Ramblais rouge pure</h3>
-                    <div class="btn-produit">
-                        <a href="https://wa.me/message/GP3FPGUQQJPIG1" class="btn">COMMANDER</a>
-                        <a href="#" class="icons"><img src="{% static 'images/shopping-basket-line.png' %}" alt=""></a>
-                    </div>
-                </div>
-                <div class="element">
-                    <img src="{% static 'images/a1-ramblais-laterite.jpg' %}" alt="Designing And Building">
-                    <h3>Ramblais laterite</h3>
-                    <div class="btn-produit">
-                        <a href="https://wa.me/message/GP3FPGUQQJPIG1" class="btn">COMMANDER</a>
-                        <a href="#" class="icons"><img src="{% static 'images/shopping-basket-line.png' %}" alt=""></a>
-                    </div>
-                </div>
-                <div class="element">
-                    <img src="{% static 'images/a1-ramblais-rouge-pure.jpg' %}" alt="Designing And Building">
-                    <h3>Ramblais rouge pure</h3>
-                    <div class="btn-produit">
-                        <a href="https://wa.me/message/GP3FPGUQQJPIG1" class="btn">COMMANDER</a>
-                        <a href="#" class="icons"><img src="{% static 'images/shopping-basket-line.png' %}" alt=""></a>
-                    </div>
-                </div>
-            </div>     
-        </div>
-    </section>
-
-    <!--FIN SECTION PRODUITS-->
-    
-    <!--DEBUT SECTION CONTACTER-NOUS -->
-
-    <section class="contact" id="contact">
-        <h1>Contact-nous</h1>
-        <div class="contact-div">
-            <div class="formulaire">
-                <p>Nous sommes ravis de pouvoir vous aider avec vos projets et vos questions. N'hésitez pas à nous contacter en remplissant le formulaire ci-dessous. Que ce soit pour une demande de devis, des renseignements supplémentaires ou des suggestions, notre équipe vous répondra dans les plus brefs délais.</p>
-                <form class="form1" method="post">
-                    {% csrf_token %}
-                    <input name="name" required type="text" placeholder="Entrer votre nom">
-                    <input name="email" required type="email" placeholder="Email">
-                    <input name="phone" required type="tel" placeholder="Numero de telephone">
-                    <textarea name="message" required placeholder="Message"></textarea>
-                    <button type="submit">ENVOYER</button>
-                </form>                     
-            </div>
-            <div class="img-form">
-                <img src="{% static 'images/section1-i1.jpg' %}" alt="">
             </div>
         </div>
     </section>
-
-    <!--FIN SECTION CONTACTEZ-NOUS -->
-    
-    <!--DEBUT FOOTER-->
-
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="contact-info">
-                <img src="{% static 'images/phone-fill.svg' %}" alt="">
-                <p>+228 97 86 87 47</p>
-                <img src="{% static 'images/whatsapp-fill.svg' %}" alt="">
-                <p>+228 96 98 68 75</p>
+    <!-- end section --> 
+    <!-- start section --> 
+    <section class="bg-very-light-gray">
+        <div class="container">
+            <div class="row align-items-center mb-6 xs-mb-8">
+                <div class="col-md-8 text-center text-md-start sm-mb-20px">
+                    <h3 class="alt-font text-dark-gray fw-500 mb-0 ls-minus-1px shadow-none">
+                        Nos produits en <span class="fw-700 text-highlight d-inline-block">
+                            vente et location
+                            <span class="bg-base-color h-10px bottom-1px opacity-3 separator-animation">
+                            </span>
+                        </span>
+                    </h3>
+                </div>
+                <div class="col-md-4">
+                    <div class="d-flex justify-content-center justify-content-md-end">
+                        <a href="#" class="fw-600 alt-font text-dark-gray text-dark-gray-hover d-flex align-items-center">
+                            Voir tous les produits
+                            <span class="d-flex align-items-center justify-content-center bg-dark-gray h-40px w-40px text-center rounded-circle fs-16 text-white ms-10px">
+                                <i class="fa-brands fa-arrow-right" style="color: #ffffff;"></i>
+                            </span>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="social-media">
-                <a href="https://www.facebook.com/mrgaelshopzone">
-                    <img src="{% static 'images/facebook-circle-fill.svg' %}" alt="Facebook">
-                </a>
-                <a href="https://tiktok.com">
-                    <img src="{% static 'images/tiktok-fill.svg' %}" alt="TikTok">
-                </a>
-                <a href="https://wa.me/message/IKZHBB7EOF7GN1">
-                    <img src="{% static 'images/whatsapp-fill.svg' %}" alt="Whatsapp">
-                </a>
-                <a href="lxolalikokouguel@gmail.com">
-                    <img src="{% static 'images/mail-fill.svg' %}" alt="Mail">
-                </a>
-                <a href="+22896986875">
-                    <img src="{% static 'images/phone-fill.svg' %}" alt="Telephone">
-                </a>
-            </div>
-            <p>ETS BIG-TRANSPORT, Votre satisfaction est notre preoccupation.</p>
-            <p>© Copyright 2024 Tout droit reserver.</p>
+            <div class="row row-cols-1 row-cols-xl-3 row-cols-md-2 justify-content-center">
+                {% for annonce in annonces %}
+                <div class="col">
+                    <div class="border-radius-6px overflow-hidden box-shadow-large">
+                        <div class="image position-relative">
+                            <a href="#">
+                                <img src="{{ annonce.photos.first.image.url }}" alt="{{ annonce.titre }}">
+                            </a>
+                            <div class="col-auto bg-base-color border-radius-50px ps-15px pe-15px text-uppercase alt-font fw-600 text-white fs-12 lh-24 position-absolute left-20px top-20px" style="color: #ffffff !important;">
+                                {{ annonce.category.titre|default:"Non classé" }}
+                            </div>
+                        </div> 
+                        <div class="bg-white">
+                            <div class="row ps-35px pe-35px pt-20px pb-20px md-ps-25px md-pe-25px align-items-center">
+                                <div class="col">
+                                    <a href="#" class="alt-font text-dark-gray fw-700 fs-22 me-10px" id="titre-annonce">
+                                        {{ annonce.titre|truncatewords:5|default:"Titre indisponible" }}
+                                    </a>
+                                </div>
+                                <div class="col text-end">
+                                    <a href="#" class="btn btn-dark-gray btn-very-small btn-round-edge fw-600">
+                                        Panier
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row ps-35px pe-35px pt-20px pb-20px md-ps-25px md-pe-25px align-items-center">
+                                <div class="col">
+                                    <a href="#" class="btn btn-dark-gray btn-very-small btn-round-edge fw-600">
+                                        Voir Plus
+                                    </a>
+                                </div>
+                                <div class="col text-end">
+                                    <span class="fs-20 alt-font text-dark-gray fw-700 mb-0">{{ annonce.prix|default:0 }} FCFA / m<sup>3</sup></span>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+                {% endfor %}
+            </div> 
         </div>
-    </footer> 
+    </section>
+    <!-- end section -->
 
-    <!--fin footer-->
+    <!-- start section -->
+    <section class="overflow-hidden bg-gradient-very-light-gray">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-xl-4 col-lg-5 md-mb-50px sm-mb-35px">
+                    <span class="fs-20 d-inline-block mb-15px text-base-color">Fournisseur de matériaux de construction et solutions de transport</span>
+                    <h3 class="alt-font fw-500 text-dark-gray ls-minus-1px w-90 xl-w-100 shadow-none" data-shadow-animation="true" data-animation-delay="700">Nous sommes disponibles dans <span class="fw-700 text-highlight d-inline-block">plusieurs quartiers<span class="bg-base-color h-10px bottom-1px opacity-3 separator-animation"></span></span></h3>
+                    <p class="mb-30px w-90 md-w-100">Nous vous accompagnons dans vos projets de construction en vous proposant une large gamme de matériaux : sable, gravier, briques et bien plus encore.
+                        Nous mettons également à votre disposition des camions pour la livraison et le transport de vos matériaux, garantissant rapidité et efficacité.</p>
+                    <div class="d-flex">
+                        <!-- start slider navigation -->
+                        <div class="slider-one-slide-prev-1 swiper-button-prev slider-navigation-style-04 bg-white box-shadow-large"><i class="fa-solid fa-arrow-left icon-small text-dark-gray"></i></div>
+                        <div class="slider-one-slide-next-1 swiper-button-next slider-navigation-style-04 bg-white box-shadow-large"><i class="fa-solid fa-arrow-right icon-small text-dark-gray"></i></div>
+                        <!-- end slider navigation -->
+                    </div>
+                </div>
+                <div class="col-xl-8 col-lg-7">
+                    <div class="outside-box-right-20 sm-outside-box-right-0" data-anime='{ "translateY": [0, 0], "opacity": [0,1], "duration": 1200, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>
+                        <div class="swiper magic-cursor slider-one-slide" data-slider-options='{ "slidesPerView": 1, "spaceBetween": 30, "loop": true, "pagination": { "el": ".slider-three-slide-pagination", "clickable": true, "dynamicBullets": true }, "navigation": { "nextEl": ".slider-one-slide-next-1", "prevEl": ".slider-one-slide-prev-1" }, "keyboard": { "enabled": true, "onlyInViewport": true }, "breakpoints": { "1200": { "slidesPerView": 3 }, "768": { "slidesPerView": 2 }, "320": { "slidesPerView": 1 } }, "effect": "slide" }'>
+                            <div class="swiper-wrapper">
+                                <!-- start slider item -->
+                                <div class="swiper-slide">
+                                    <!-- start interactive banner item -->
+                                    <div class="col interactive-banner-style-05">
+                                        <figure class="m-0 hover-box overflow-hidden position-relative border-radius-6px">
+                                            <a href="#">
+                                                <img src="{% static 'images/demo-real-estate-08.png' %}" class="w-100 border-radius-6px" alt="" />
+                                                <div class="position-absolute top-0px left-0px w-100 h-100 bg-gradient-gray-light-dark-transparent"></div>
+                                                <div class="position-absolute top-25px right-25px bg-orange border-radius-50px ps-5px pe-15px lh-28">
+                                                    <div class="w-20px h-20px text-center bg-white rounded-circle d-inline-block align-middle text-orange lh-18">
+                                                        <i class="fa-solid fa-check fs-10"></i>
+                                                    </div>
+                                                    <span class="d-inline-block align-middle alt-font fw-600 text-white fs-12 text-uppercase">Confiance</span>
+                                                </div>
+                                            </a>
+                                            <figcaption class="d-flex flex-column align-items-start justify-content-center position-absolute left-0px top-0px w-100 h-100 z-index-1 p-50px xl-p-40px sm-p-30px last-paragraph-no-margin">
+                                                <img src="{% static 'images/demo-real-estate-08.png' %}" class="mb-auto h-70px" alt="" />
+                                                <a href="#" class="text-white alt-font fw-600 fs-26">Adakpame, LOME</a>
+                                                <span class="opacity-7 text-white">+17 Projets</span>
+                                                <a href="#" class="btn btn-light-base-color btn-small btn-round-edge btn-box-shadow mt-20px">Tout propriété<i class="feather icon-feather-arrow-right icon-very-small"></i></a>
+                                            </figcaption>
+                                        </figure>
+                                    </div>
+                                    <!-- end interactive banner item -->
+                                </div>
+                                <!-- end slider item -->
+                                <!-- start slider item -->
+                                <div class="swiper-slide">
+                                    <!-- start interactive banner item -->
+                                    <div class="col interactive-banner-style-05">
+                                        <figure class="m-0 hover-box overflow-hidden position-relative border-radius-6px">
+                                            <a href="#">
+                                                <img src="{% static 'images/demo-real-estate-08.png' %}" class="w-100 border-radius-6px" alt="" />
+                                                <div class="position-absolute top-0px left-0px w-100 h-100 bg-gradient-gray-light-dark-transparent"></div>
+                                                <div class="position-absolute top-25px right-25px bg-base-color border-radius-50px ps-5px pe-15px lh-28">
+                                                    <div class="w-20px h-20px text-center bg-white rounded-circle d-inline-block align-middle text-base-color lh-18">
+                                                        <i class="fa-solid fa-check fs-10"></i>
+                                                    </div>
+                                                    <span class="d-inline-block align-middle alt-font fw-600 text-white fs-12 text-uppercase">Certifié</span>
+                                                </div>
+                                            </a>
+                                            <figcaption class="d-flex flex-column align-items-start justify-content-center position-absolute left-0px top-0px w-100 h-100 z-index-1 p-50px xl-p-40px sm-p-30px last-paragraph-no-margin">
+                                                <img src="{% static 'images/demo-real-estate-08.png' %}" class="mb-auto h-70px" alt="" />
+                                                <a href="#" class="text-white alt-font fw-600 fs-26">Segbe-Akato, LOME</a>
+                                                <span class="opacity-7 text-white">+20 Clients</span>
+                                                <a href="#" class="btn btn-light-base-color btn-small btn-round-edge btn-box-shadow mt-20px">Tout propriété<i class="feather icon-feather-arrow-right icon-very-small"></i></a>
+                                            </figcaption>
+                                        </figure>
+                                    </div>
+                                    <!-- end interactive banner item -->
+                                </div>
+                                <!-- end slider item -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end section -->
+    <!-- start section -->
+    <section class="py-0">
+        <div class="container">
+            <div class="row justify-content-center mt-6 sm-mt-50px">
+                <div class="col-auto icon-with-text-style-08">
+                    <div class="feature-box feature-box-left-icon-middle">
+                        <div class="feature-box-icon me-15px">
+                            <i class="bi bi-patch-check icon-medium text-base-color"></i>
+                        </div>
+                        <div class="feature-box-content alt-font text-dark-gray fs-22 fw-600">
+                            Nous grandissons rapidement ! Aujourd'hui, ETS BIG-TRANSPORT compte plus de <span class="text-decoration-line-bottom">310 Cliensts actifs.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end section -->
+    <!-- start section -->
+    <section class="position-relative overflow-hidden h-400px md-h-600px sm-h-700px top-10px">
+        <img src="{% static 'images/demo-real-estate-07.png' %}" alt="" class="position-absolute left-100px top-50px z-index-minus-1" data-bottom-top="transform: translate3d(80px, 0px, 0px);" data-top-bottom="transform: translate3d(-180px, 0px, 0px);" />
+        <img src="{% static 'images/demo-real-estate-08.png' %}" alt="" class="position-absolute right-100px top-100px z-index-minus-1" data-bottom-top="transform:scale(1.4, 1.4) translate3d(0px, 0px, 0px);" data-top-bottom="transform:scale(1, 1) translate3d(-400px, 0px, 0px);" />
+        <div class="container">  
+            <div class="row align-items-center justify-content-center">  
+                <div class="col-lg-6 text-end md-mb-50px" data-anime='{ "effect": "slide", "color": "#262b35", "direction":"lr", "easing": "easeOutQuad", "delay":50}'> 
+                    <figure class="position-relative pt-0 bottom-90px">
+                        <figcaption class="position-absolute bg-dark-gray border-radius-10px box-shadow-quadruple-large xs-bottom-minus-20px left-minus-30px md-left-0px w-230px xs-w-210px text-center last-paragraph-no-margin animation-float">
+                            <div class="bg-white pt-35px pb-35px border-radius-8px mb-15px position-relative top-minus-1px">
+                                <h1 class="fw-700 ls-minus-3px text-dark-gray mb-0 alt-font">4.8</h1>
+                                <div class="text-golden-yellow fs-18 ls-1px">
+                                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                                </div>
+                                <span class="text-dark-gray d-block alt-font fw-600">2488 Reviews</span>
+                                <div class="d-inline-block fs-12 text-uppercase bg-base-color ps-20px pe-20px lh-30 text-white border-radius-100px box-shadow-large" style="color: #ffffff !important;">Excellent score</div>
+                            </div>
+                            <img src="{% static 'images/demo-real-estate-trustpilot.svg' %}" class="h-30px mb-20px" alt="" />
+                        </figcaption>
+                    </figure>
+                </div>
+                <div class="col-lg-5 offset-lg-1 col-md-10 text-center text-lg-start" data-anime='{ "translateY": [0, 0], "opacity": [0,1], "duration": 1200, "delay": 100, "staggervalue": 150, "easing": "easeOutQuad" }'>
+                    <span class="fs-20 d-inline-block mb-15px text-base-color">Clients feedback</span>
+                    <h2 class="alt-font fw-500 text-dark-gray ls-minus-1px shadow-none" data-shadow-animation="true" data-animation-delay="700">Here is what our <span class="fw-700 text-highlight d-inline-block">client's<span class="bg-base-color h-10px bottom-4px opacity-3 separator-animation"></span></span> have to say</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end section -->
+         <!-- start section -->
+    <section class="bg-gradient-quartz-white border-radius-6px lg-border-radius-0px">
+        <div class="container background-no-repeat background-position-top"
+            style="background-image: url('{% static 'images/demo-corporate-bg-02.png' %}');">
+            <div class="row justify-content-center mb-3">
+                <div class="col-xxl-6 col-xl-7 col-lg-8 col-md-9 text-center" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
+                    <h3 class="text-dark-gray fw-700 ls-minus-1px">Avis de Certains de Nos Clients</h3>
+                </div>
+            </div>
+            <div class="row justify-content-center align-items-center mb-6 sm-mb-8" data-anime='{ "el": "childs", "translateY": [0, 0], "opacity": [0,1], "duration": 1200, "delay": 100, "staggervalue": 150, "easing": "easeOutQuad" }'>
+                <div class="col-12 position-relative ps-8 pe-8 lg-ps-15px lg-pe-15px">
+                    <div class="swiper magic-cursor testimonials-style-06" data-slider-options='{ "loop": true, "autoplay": { "delay": 30000, "disableOnInteraction": false }, "keyboard": { "enabled": true, "onlyInViewport": true }, "navigation": { "nextEl": ".swiper-button-next-nav", "prevEl": ".swiper-button-previous-nav", "effect": "fade" } }'>
+                        <div class="swiper-wrapper">
+                            <!-- start testimonial item -->
+                            <div class="swiper-slide">
+                                <div class="row align-items-center justify-content-center">
+                                    <div class="col-8 col-md-4 col-sm-6 text-center md-mb-30px">
+                                        <img src="{% static 'images/akdgroup.png' %}"  alt="">
+                                    </div>
+                                    <div class="col-lg-5 col-md-7 last-paragraph-no-margin text-center text-md-start">
+                                        <a href="#" class="mb-15px d-block">
+                                            <span class="bg-base-color fw-700 text-white text-uppercase border-radius-30px ps-20px pe-20px fs-12 me-10px sm-m-5px d-inline-block align-middle">AKD GROUP</span>
 
-    <script src="{% static 'js/script.js' %}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+                                        </a>
+                                        <span class="mb-5px d-table fs-18 lh-30 fw-500 text-dark-gray">"Service au top ! J’ai commandé du sable et du gravier pour mon chantier, la livraison a été rapide et les matériaux de très bonne qualité. Je recommande fortement !"</span>
+                                        <span class="fs-15 text-uppercase fw-800 text-base-color ls-1px">Jean K. KOUGBEDJI
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end testimonial item -->
+                            <!-- start testimonial item -->
+                            <div class="swiper-slide">
+                                <div class="row align-items-center justify-content-center">
+                                    <div class="col-8 col-md-4 col-sm-6 text-center md-mb-30px">
+                                        <img src="{% static 'images/heavymat.png' %}"  alt="">
+                                    </div>
+                                    <div class="col-lg-5 col-md-7 last-paragraph-no-margin text-center text-md-start">
+                                        <a href="#" class="mb-15px d-block">
+                                            <span class="bg-base-color fw-700 text-white text-uppercase border-radius-30px ps-20px pe-20px fs-12 me-10px sm-m-5px d-inline-block align-middle">HEAVYMAT INDUSTRY TOGO</span>
+
+                                        </a>
+                                        <span class="mb-5px d-table fs-18 lh-30 fw-500 text-dark-gray">J’ai apprécié la flexibilité et la rapidité de livraison. Le Latérit de mon terrain a été fait sans aucun souci. Un service sérieux et efficace.</span>
+                                        <span class="fs-15 text-uppercase fw-800 text-base-color ls-1px">NOUGBESOU Komi
+                                            , HEAVYMAT INDUSTRY
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end testimonial item -->
+                            <!-- start testimonial item -->
+                            <div class="swiper-slide">
+                                <div class="row align-items-center justify-content-center">
+                                    <div class="col-8 col-md-4 col-sm-6 text-center md-mb-30px">
+                                        <img src="{% static 'images/simagroup.png' %}"  alt="">
+                                    </div>
+                                    <div class="col-lg-5 col-md-7 last-paragraph-no-margin text-center text-md-start">
+                                        <a href="#" class="mb-15px d-block">
+                                            <span class="bg-base-color fw-700 text-white text-uppercase border-radius-30px ps-20px pe-20px fs-12 me-10px sm-m-5px d-inline-block align-middle">SIMA GROUP SARL U</span>
+
+                                        </a>
+                                        <span class="mb-5px d-table fs-18 lh-30 fw-500 text-dark-gray">"Enfin un fournisseur fiable pour les matériaux de construction ! J’ai acheté du ciment et des briques, tout était conforme à ma commande. Très satisfait du service client."</span>
+                                        <span class="fs-15 text-uppercase fw-800 text-base-color ls-1px">PANASSIM E. ELLA
+                                            , SIMA GRAOUP
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end testimonial item -->
+                            <!-- start testimonial item -->
+                            <div class="swiper-slide">
+                                <div class="row align-items-center justify-content-center">
+                                    <div class="col-8 col-md-4 col-sm-6 text-center md-mb-30px">
+                                        <img src="{% static 'images/karmod.png' %}"  alt="">
+
+                                    </div>
+                                    <div class="col-lg-5 col-md-7 last-paragraph-no-margin text-center text-md-start">
+                                        <a href="#" class="mb-15px d-block">
+                                            <span class="bg-base-color fw-700 text-white text-uppercase border-radius-30px ps-20px pe-20px fs-12 me-10px sm-m-5px d-inline-block align-middle">KARMOD COMPANY BENIN</span>
+
+                                        </a>
+                                        <span class="mb-5px d-table fs-18 lh-30 fw-500 text-dark-gray">"Matériaux de très bonne qualité et service client réactif. La location des engins s’est bien déroulée, je referai appel à eux sans hésiter."</span>
+                                        <span class="fs-15 text-uppercase fw-800 text-base-color ls-1px">DOSSAH Aku Dodzi, KARMOD COMPANY
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end testimonial item -->
+                        </div>
+                        <!-- start slider navigation -->
+                        <div class="swiper-button-previous-nav swiper-button-prev md-left-0px"><i class="feather icon-feather-arrow-left icon-extra-medium text-dark-gray"></i></div>
+                        <div class="swiper-button-next-nav swiper-button-next md-right-0px"><i class="feather icon-feather-arrow-right icon-extra-medium text-dark-gray"></i></div>
+                        <!-- end slider pagination -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="row  clients-style-06 justify-content-center ps-3 pe-3 xs-mt-40px" data-anime='{ "el": "childs", "translateX": [50, 0], "opacity": [0,1], "duration": 1200, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>
+                <div class="col-12" style="overflow: hidden; ">
+                    <div class="outside-box-right-25 sm-outside-box-right-0">
+                        <div class="swiper magic-cursor slider-one-slide" data-slider-options='{ "slidesPerView": 1, "spaceBetween": 60, "loop": true, "navigation": { "nextEl": ".slider-one-slide-next-1", "prevEl": ".slider-one-slide-prev-1" }, "autoplay": { "delay": 1000, "disableOnInteraction": false }, "keyboard": { "enabled": true, "onlyInViewport": true }, "breakpoints": { "1200": { "slidesPerView": 9 }, "992": { "slidesPerView": 9 }, "768": { "slidesPerView": 9 }, "320": { "slidesPerView": 9 } }, "effect": "slide" }'>
+                            <div class="swiper-wrapper">
+                                <!-- start slider item -->
+                                <div class="swiper-slide" >
+                                    <!-- start interactive banner item -->
+                                    <div class="interactive-banner-style-09 border-radius-6px position-relative">
+                                        <img src="{% static 'images/akdgroup.png' %}" alt="" />
+
+                                    </div>
+                                    <!-- end interactive banner item -->
+                                </div>
+                                <!-- end slider item -->
+                                 <!-- start slider item -->
+                                 <div class="swiper-slide" >
+                                    <!-- start interactive banner item -->
+                                    <div class="interactive-banner-style-09 border-radius-6px position-relative">
+                                        <img src="{% static 'images/simagroup.png' %}" alt="" />
+
+                                    </div>
+                                    <!-- end interactive banner item -->
+                                </div>
+                                <!-- end slider item -->
+                                <!-- start slider item -->
+                                <div class="swiper-slide">
+                                    <!-- start interactive banner item -->
+                                    <div class="interactive-banner-style-09 border-radius-6px position-relative">
+                                        <img src="{% static 'images/karmod.png' %}" alt="" />
+
+                                    </div>
+                                    <!-- end interactive banner item -->
+                                </div>
+                                <!-- end slider item -->
+                                <!-- start slider item -->
+                                <div class="swiper-slide">
+                                    <!-- start interactive banner item -->
+                                    <div class="interactive-banner-style-09 border-radius-6px position-relative">
+                                        <img src="{% static 'images/heavymat.png' %}" alt="" />
+
+                                    </div>
+                                    <!-- end interactive banner item -->
+                                </div>
+                                <!-- end slider item -->
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+    <!-- end section -->
+    <!-- start footer -->
+    <footer class="footer-light bg-gradient-very-light-gray pb-0">
+        <div class="container position-relative pt-3 pb-3 overlap-section md-mb-15px">
+            <div class="position-absolute left-0px top-0px background-no-repeat background-size-100 h-100 w-100 animation-float" style="background-image: url('https://via.placeholder.com/1190x262')"></div>
+        </div>
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <!-- start footer column -->
+                <div class="col-auto d-flex flex-column flex-md-row align-items-center text-center text-md-start">
+                    <div class="text-dark-gray fs-28 alt-font fw-500">Divers Materiaux de constructions <span class="fw-700 text-decoration-line-bottom">a vendre et a louer.</span></div>
+                    <div class="bg-white border-radius-50px d-flex align-items-center p-10px ps-35px ms-20px md-ps-20px md-ms-15px box-shadow-medium sm-m-20px">
+                        <a href="{% url 'contact-us' %}" class="text-dark-gray fs-22 alt-font fw-500 me-10px overflow-hidden">Dire, <span class="fw-700 w-65px text-start d-inline-block" data-fancy-text='{ "effect": "rotate", "string": ["Salut!", "Hi!", "Hello!"] }'></span></a>
+                        <span class="text-dark-gray h-45px w-45px text-center d-flex align-items-center justify-content-center border-radius-100 bg-base-color-transparent fs-20">&#128075;</span>
+                    </div>
+                </div>
+                <!-- end footer column -->
+            </div>
+            <div class="row justify-content-center mt-5 mb-4 sm-mb-35px">
+                <!-- start footer column -->
+                <div class="col-lg-3 last-paragraph-no-margin md-mb-35px text-center text-lg-start">
+                    <a href="#" class="footer-logo mb-10px d-inline-block"><img src="images/demo-real-estate-logo-black.png" data-at2x="images/demo-real-estate-logo-black@2x.png" alt=""></a>
+                    <p class="w-85 lg-w-100">Faite confiance a ETS BIG TRANSPORT pour tous vos besoins dans la construction.</p>
+                    <div class="elements-social social-icon-style-02 mt-15px">
+                        <ul class="small-icon dark">
+                            <li><a class="facebook" href="#" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
+                            <li><a class="dribbble" href="https://wa.me/+22896986875" target="_blank"><i class="fa-brands fa-whatsapp"></i></a></li> 
+                            <li><a class="twitter" href="#" target="_blank"><i class="fa-brands fa-tiktok"></i></a></li> 
+                            <li><a class="instagram" href="#" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- end footer column -->
+                <!-- start footer column -->
+                <div class="col-6 col-lg-2 col-md-3 sm-mb-25px">
+                    <span class="alt-font fs-18 fw-600 d-block text-dark-gray mb-5px">Entreprise</span>
+                    <ul>
+                        <li><a href="#" id="titre-annonce">A-propos</a></li>
+                        <li><a href="#" id="titre-annonce">Nos agents</a></li>
+                        <li><a href="#" id="titre-annonce">Dernier blog</a></li>
+                        <li><a href="{% url 'contact-us' %}" id="titre-annonce">Contact-nous</a></li>
+                    </ul>
+                </div>
+                <!-- end footer column -->
+                <!-- start footer column -->
+                <div class="col-6 col-lg-2 col-md-3 sm-mb-25px">
+                    <span class="alt-font fs-18 fw-600 d-block text-dark-gray mb-5px">Resources</span>
+                    <ul>
+                        <li><a href="{% url 'contact-us' %}" id="titre-annonce">Service de location</a></li>
+                        <li><a href="{% url 'contact-us' %}" id="titre-annonce">Achat</a></li>
+                        <li><a href="{% url 'contact-us' %}" id="titre-annonce">Service de demolition</a></li>
+                        <li><a href="{% url 'contact-us' %}" id="titre-annonce">Budget</a></li>
+                    </ul>
+                </div>
+                <!-- end footer column -->
+                <!-- start footer column -->
+                <div class="col-6 col-lg-2 col-md-3">
+                    <span class="alt-font fs-18 fw-600 d-block text-dark-gray mb-5px">Client</span>
+                    <ul>                           
+                        <li><a href="#"  id="titre-annonce">Assistance client</a></li>
+                        <li><a href="#"  id="titre-annonce">Centre d'aide</a></li>
+                        <li><a href="#"  id="titre-annonce">État du système</a></li>
+                        <li><a href="#"  id="titre-annonce">Retour</a></li>
+                    </ul>
+                </div>
+                <!-- end footer column -->
+                <!-- start footer column -->
+                <div class="col-6 col-lg-2 col-md-3">
+                    <span class="alt-font fs-18 fw-600 d-block text-dark-gray mb-10px">Dis bonjour</span>
+                    <span class="d-block lh-normal">Besoin d'aide ?</span>
+                    <a href="mailto:btbtp@gmail.com" class="text-dark-gray lh-22 d-inline-block mb-20px" id="titre-annonce">btbtp@gmail.com</a>
+                    <span class="d-block lh-normal">Service Client</span>
+                    <a href="tel:+22896986875" class="text-dark-gray lh-22 d-inline-block" id="titre-annonce">+228 96 98 68 75</a>
+                    <a href="tel:+22896986875" class="text-dark-gray lh-22 d-inline-block" id="titre-annonce">+228 97 86 87 47</a>
+                </div>
+                <!-- end footer column -->                     
+            </div>
+            <!-- start footer content -->
+            <div class="border-top border-color-extra-medium-gray pt-35px pb-35px text-center">
+                <span class="fs-13 w-60 lg-w-70 md-w-90 sm-w-100 d-block mx-auto lh-22">ETS BIG-TRANSPORT <a href="#" class="text-dark-gray text-decoration-line-bottom"  id="titre-annonce">politique de confidentialite</a> et <a href="#" class="text-dark-gray text-decoration-line-bottom"  id="titre-annonce">les termes de service</a> apply. You must not use this website if you disagree with any of these website standard terms and conditions.</span>
+            </div>
+            <!-- end footer content -->
+        </div> 
+    </footer>
+    <!-- end footer -->
+    <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/vendors.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
 </body>
 </html>

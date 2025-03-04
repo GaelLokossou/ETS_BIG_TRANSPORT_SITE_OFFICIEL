@@ -19,7 +19,7 @@
         </ul>
         <form class="recherche" method="get" action="{% url 'search' %}">
             <input class="search" name="search" type="search" placeholder="Recherche">
-            <a href="https://wa.me/message/GP3FPGUQQJPIG1"><img src="{% static 'images/shopping-cart-fill.svg' %}" alt="shopping"></a>
+            <a href="https://wa.me/+22896986875"><img src="{% static 'images/shopping-cart-fill.svg' %}" alt="shopping"></a>
         </form>
     </nav>
     <!-- FIN MENU -->
@@ -57,12 +57,14 @@
                 <option value="sinotruk">Camion Sinotruk</option>
                 <option value="remorque">Camion Remorque</option>
             </select>
+            <label for="nombre_voyage">Nombre de voyage</label>
+            <input type="text" id="nombre_voyage" name="nombre_voyage" min="1" max="100000" placeholder="Entrez le nombre de voyage">
         </div>
 
         <!-- Nombre de cubage -->
         <div id="cubage-section" style="display: none;">
             <label for="cubage">Nombre de cubage :</label>
-            <input type="text" id="cubage" name="cubage" min="1" max="100" placeholder="Entrez le nombre de cubage">
+            <input type="text" id="cubage" name="cubage" min="1" max="100000" placeholder="Entrez le nombre de cubage">
         </div>
 
         <!-- Bouton de soumission -->
@@ -88,5 +90,92 @@
             }
         });
     </script>
+    <!-- start footer -->
+    <footer class="footer-light bg-gradient-very-light-gray pb-0">
+        <div class="container position-relative pt-3 pb-3 overlap-section md-mb-15px">
+            <div class="position-absolute left-0px top-0px background-no-repeat background-size-100 h-100 w-100 animation-float" style="background-image: url('https://via.placeholder.com/1190x262')"></div>
+        </div>
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <!-- start footer column -->
+                <div class="col-auto d-flex flex-column flex-md-row align-items-center text-center text-md-start">
+                    <div class="text-dark-gray fs-28 alt-font fw-500">Divers Materiaux de constructions <span class="fw-700 text-decoration-line-bottom">a vendre et a louer.</span></div>
+                    <div class="bg-white border-radius-50px d-flex align-items-center p-10px ps-35px ms-20px md-ps-20px md-ms-15px box-shadow-medium sm-m-20px">
+                        <a href="{% url 'contact-us' %}" class="text-dark-gray fs-22 alt-font fw-500 me-10px overflow-hidden">Dire, <span class="fw-700 w-65px text-start d-inline-block" data-fancy-text='{ "effect": "rotate", "string": ["Salut!", "Hi!", "Hello!"] }'></span></a>
+                        <span class="text-dark-gray h-45px w-45px text-center d-flex align-items-center justify-content-center border-radius-100 bg-base-color-transparent fs-20">&#128075;</span>
+                    </div>
+                </div>
+                <!-- end footer column -->
+            </div>
+            <div class="row justify-content-center mt-5 mb-4 sm-mb-35px">
+                <!-- start footer column -->
+                <div class="col-lg-3 last-paragraph-no-margin md-mb-35px text-center text-lg-start">
+                    <a href="#" class="footer-logo mb-10px d-inline-block"><img src="images/demo-real-estate-logo-black.png" data-at2x="images/demo-real-estate-logo-black@2x.png" alt=""></a>
+                    <p class="w-85 lg-w-100">Faite confiance a ETS BIG TRANSPORT pour tous vos besoins dans la construction.</p>
+                    <div class="elements-social social-icon-style-02 mt-15px">
+                        <ul class="small-icon dark">
+                            <li><a class="facebook" href="#" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
+                            <li><a class="dribbble" href="https://wa.me/+22896986875" target="_blank"><i class="fa-brands fa-whatsapp"></i></a></li> 
+                            <li><a class="twitter" href="#" target="_blank"><i class="fa-brands fa-tiktok"></i></a></li> 
+                            <li><a class="instagram" href="#" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- end footer column -->
+                <!-- start footer column -->
+                <div class="col-6 col-lg-2 col-md-3 sm-mb-25px">
+                    <span class="alt-font fs-18 fw-600 d-block text-dark-gray mb-5px">Entreprise</span>
+                    <ul>
+                        <li><a href="#" id="titre-annonce">A-propos</a></li>
+                        <li><a href="#" id="titre-annonce">Nos agents</a></li>
+                        <li><a href="#" id="titre-annonce">Dernier blog</a></li>
+                        <li><a href="{% url 'contact-us' %}" id="titre-annonce">Contact-nous</a></li>
+                    </ul>
+                </div>
+                <!-- end footer column -->
+                <!-- start footer column -->
+                <div class="col-6 col-lg-2 col-md-3 sm-mb-25px">
+                    <span class="alt-font fs-18 fw-600 d-block text-dark-gray mb-5px">Resources</span>
+                    <ul>
+                        <li><a href="{% url 'contact-us' %}" id="titre-annonce">Service de location</a></li>
+                        <li><a href="{% url 'contact-us' %}" id="titre-annonce">Achat</a></li>
+                        <li><a href="{% url 'contact-us' %}" id="titre-annonce">Service de demolition</a></li>
+                        <li><a href="{% url 'contact-us' %}" id="titre-annonce">Budget</a></li>
+                    </ul>
+                </div>
+                <!-- end footer column -->
+                <!-- start footer column -->
+                <div class="col-6 col-lg-2 col-md-3">
+                    <span class="alt-font fs-18 fw-600 d-block text-dark-gray mb-5px">Client</span>
+                    <ul>                           
+                        <li><a href="#"  id="titre-annonce">Assistance client</a></li>
+                        <li><a href="#"  id="titre-annonce">Centre d'aide</a></li>
+                        <li><a href="#"  id="titre-annonce">État du système</a></li>
+                        <li><a href="#"  id="titre-annonce">Retour</a></li>
+                    </ul>
+                </div>
+                <!-- end footer column -->
+                <!-- start footer column -->
+                <div class="col-6 col-lg-2 col-md-3">
+                    <span class="alt-font fs-18 fw-600 d-block text-dark-gray mb-10px">Dis bonjour</span>
+                    <span class="d-block lh-normal">Besoin d'aide ?</span>
+                    <a href="mailto:btbtp@gmail.com" class="text-dark-gray lh-22 d-inline-block mb-20px" id="titre-annonce">btbtp@gmail.com</a>
+                    <span class="d-block lh-normal">Service Client</span>
+                    <a href="tel:+22896986875" class="text-dark-gray lh-22 d-inline-block" id="titre-annonce">+228 96 98 68 75</a>
+                    <a href="tel:+22896986875" class="text-dark-gray lh-22 d-inline-block" id="titre-annonce">+228 97 86 87 47</a>
+                </div>
+                <!-- end footer column -->                     
+            </div>
+            <!-- start footer content -->
+            <div class="border-top border-color-extra-medium-gray pt-35px pb-35px text-center">
+                <span class="fs-13 w-60 lg-w-70 md-w-90 sm-w-100 d-block mx-auto lh-22">ETS BIG-TRANSPORT <a href="#" class="text-dark-gray text-decoration-line-bottom"  id="titre-annonce">politique de confidentialite</a> et <a href="#" class="text-dark-gray text-decoration-line-bottom"  id="titre-annonce">les termes de service</a> apply. You must not use this website if you disagree with any of these website standard terms and conditions.</span>
+            </div>
+            <!-- end footer content -->
+        </div> 
+    </footer>
+    <!-- end footer -->
+    <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/vendors.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
 </body>
 </html>

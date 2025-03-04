@@ -1,0 +1,49 @@
+{% extends 'admin/admin.html' %}
+{% block content %}
+    <!-- breadcrumb -->
+    <div class="breadcrumb-header justify-content-between">
+        <div class="my-auto">
+            <div class="d-flex">
+                <h4 class="content-title mb-0 my-auto">Creation de catégories</h4><span class="text-muted mt-1 tx-13 ml-2 mb-0">/ formulaire</span>
+            </div>
+        </div>
+
+    </div>
+    <!-- breadcrumb -->
+    {% if messages %}
+    <div>
+        {% for message in messages %}
+            <div class="alert {% if message.tags == 'success' %}alert-success{% else %}alert-danger{% endif %}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    <!-- row -->
+    <div class="row">
+        <div class="col-md-12 col-xl-12 col-xs-12 col-sm-12">
+            <!--div-->
+            <div class="card">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="card-body">
+                        <div class="row row-sm">
+                            <div class="col-lg">
+                                <input class="form-control" placeholder="Titre" name="titre" type="text">
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary waves-effect waves-light">
+                            <span class="btn-double-text" data-text="">Créer une categorie</span>
+                        </button>
+    
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- row closed -->
+
+{% endblock %}

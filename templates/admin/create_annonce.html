@@ -1,0 +1,332 @@
+{% extends 'admin\admin.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>creation d'article</title>
+    <style>
+        .ff_fileupload_uploads .ff_fileupload_summary {
+            padding: 0 0 0 1em;
+            font-size: 0.9em;
+            white-space: normal;
+            color: #7a8082;
+        }
+
+        .ff_fileupload_uploads div {
+            /* vertical-align: top; */
+            padding: 5px;
+            /* white-space: nowrap;
+            line-height: normal; */
+        }
+        .ff_fileupload_uploads .ff_fileupload_preview .ff_fileupload_preview_image {
+            display: block;
+            box-sizing: border-box;
+            border: 0 none;
+            padding: 0;
+            background-color: #DDDDDD;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+            opacity: 0.75;
+            text-align: center;
+            font-size: 12px;
+            font-weight: bold;
+            color: #222222;
+            overflow: hidden;
+            outline: none;
+            cursor: default;
+        }
+
+        .ff_fileupload_uploads .ff_fileupload_summary .ff_fileupload_filename input {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 0.3em;
+            margin-bottom: 0.1em;
+            font-size: 1.0em;
+            font-weight: normal;
+            line-height: normal;
+            border: 0px solid #e8ebf3;
+            border-radius: 0;
+            box-shadow: none;
+            color: #080e1b;
+            font-weight: 600;
+        }
+
+        .ff_fileupload_uploads .ff_fileupload_actions button.ff_fileupload_start_upload {
+            margin-right: 0.5em;
+        }
+
+        .ff_fileupload_uploads .ff_fileupload_actions button {
+            display: inline-block;
+            vertical-align: top;
+            width: 26px;
+            height: 26px;
+            box-sizing: border-box;
+            border: 1px solid #efecec;
+            border-radius: 3px;
+            padding: 0;
+            background-color: #e8ebf3;
+            background-repeat: no-repeat;
+            background-position: center center;
+            opacity: 0.85;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .ff_fileupload_uploads .ff_fileupload_summary .ff_fileupload_progress_background {
+            margin-top: 0.5em;
+            background-color: #CCCCCC;
+            height: 2px;
+        }
+
+        .ff_fileupload_uploads .ff_fileupload_summary .ff_fileupload_errors {
+            color: #A94442;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- breadcrumb -->
+    <div class="breadcrumb-header justify-content-between">
+        <div class="my-auto">
+            <div class="d-flex">
+                <h4 class="content-title mb-0 my-auto">Creation d'annonces</h4><span class="text-muted mt-1 tx-13 ml-2 mb-0">/ formulaire</span>
+            </div>
+        </div>
+
+    </div>
+    <!-- breadcrumb -->
+
+<!-- row -->
+<div class="row">
+    <div class="col-md-12 col-xl-12 col-xs-12 col-sm-12">
+        <!--div-->
+            {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            {% endif %}
+    
+            <form  method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                    <div class="row row-sm">
+                        <div class="col-lg-12 col-md-12">
+
+                            <div>
+                                <h6 class="card-title mb-1">Détail de l'annonce</h6>
+                                <p class="text-muted card-sub-title">Informations précises et complètes sur une annonce . Il est essentiel de fournir des détails clairs afin d'attirer l'attention des intéressés et de faciliter leur prise de décision.</p>
+                            </div>
+
+
+
+                        </div>
+                        <div class="col-lg-12 col-md-12">
+                            <p class="mg-b-10">Titre</p>
+                            <input class="form-control" placeholder="Titre" name="titre" type="text">
+                        </div>
+
+                    </div>
+                    <div class="row row-sm mg-t-20">
+                        <div class="col-lg">
+                            <p class="mg-b-10">Description</p>
+                            <textarea class="form-control" placeholder="Description"  name="description" rows="3"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="row row-sm mg-t-20">
+                        <div class="col-lg-12 col-md-12">
+                            <p class="mg-b-10">Catégorie</p>
+                            <select class="form-control" name="categoryId">
+                                <option value="" disabled selected>Choisissez une catégorie</option>
+                                {% for categorie in categories %}
+                                    <option value="{{ categorie.id }}">{{ categorie.titre }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="row row-sm  mg-t-20">
+                            <div class="col-lg-12 mg-t-5 mg-lg-t-5">
+                                <p class="mg-b-10">Détails Supplémentaires</p>
+                            </div>
+
+                            <div class="col-lg-3 mg-t-5 mg-lg-t-5">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            Prix
+                                        </div>
+                                    </div>
+                                    <input class="form-control " name="prix" placeholder="prix" type="text">
+
+                                </div><!-- input-group -->
+                            </div><!-- col-4 -->
+
+
+                    </div>
+
+                    <div class="row row-sm  mg-t-20">
+                    </div>
+
+                    <div class="row row-sm  mg-t-20">
+                        <div class="col-lg-12 col-md-12">
+
+                            <div>
+                                <h6 class="card-title mb-2">Upload de Fichiers</h6>
+                            </div>
+
+						</div>
+                        <div class="col-lg-12 col-md-12">
+
+
+                            <div>
+                                <input id="" type="file" name="photos" accept=".jpg, .png, image/jpeg, image/png, html, zip, css,js" multiple>
+                            </div>
+
+                         </div>
+                         <div class="col-lg-12">
+                            <div class="row row-sm mg-t-20">
+                                <!-- Appeller les photos ici -->
+                                        <div class="col-lg-12 mg-b-5">
+                                            <div class="ff_fileupload_uploads bd  d-flex" style=" border-radius: 5px; ">
+                                                <div class="ff_fileupload_preview ">
+                                                    <button class="ff_fileupload_preview_image ff_fileupload_preview_image_has_preview"
+                                                            style="background-image:url('data:image/png;base64,{{ photo.temporary_url }}');width: 50px;height: 50px;"
+                                                            type="button" aria-label="Preview">
+                                                        <span class="ff_fileupload_preview_text"></span>
+                                                    </button>
+                                                </div>
+                                                <div class="ff_fileupload_summary " style="flex: 1 0 0%;">
+                                                    <div class="ff_fileupload_filename d-flex">
+                                                        <input type="text">
+                                                    </div>
+                                                    <div class="ff_fileupload_fileinfo" style="line-height: normal; font-size: 0.9em;white-space: normal;">
+                                                    </div>
+                                                </div>
+                                                <div  style="flex: 1 0 0%;">
+                                                    <button class="btn btn-sm btn-warning  float-right" type="button" onclick="removeImage({{ index }})" aria-label="Remove from list">Supprimer</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-12">
+                            <div class="row row-sm mg-t-20">
+                                        <div class="col-lg-12 mg-b-5">
+                                            <div class="ff_fileupload_uploads bd  d-flex" style=" border-radius: 5px; ">
+                                                <div class="ff_fileupload_preview ">
+                                                    <button class="ff_fileupload_preview_image ff_fileupload_preview_image_has_preview"
+                                                            style="background-image:url('');width: 50px;height: 50px;"
+                                                            type="button" aria-label="Preview">
+                                                        <span class="ff_fileupload_preview_text"></span>
+                                                    </button>
+                                                </div>
+                                                <div class="ff_fileupload_summary " style="flex: 1 0 0%;">
+                                                    <div class="ff_fileupload_filename d-flex">
+                                                        <input type="text">
+                                                    </div>
+                                                    <div class="ff_fileupload_fileinfo" style="line-height: normal; font-size: 0.9em;white-space: normal;">
+                                                    </div>
+                                                </div>
+                                                <div  style="flex: 1 0 0%;">
+                                                    <button class="btn btn-sm btn-warning  float-right" type="button" aria-label="Remove from list">Supprimer</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                            </div>
+                        </div>
+
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary waves-effect waves-light">
+                        <span class="btn-double-text" data-text="">Créer l'annonce</span>
+
+                    </button>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- row closed -->
+</div>
+
+
+
+    <script>
+        $(document).ready(function() {
+            // Set up CSRF token for all AJAX requests
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+
+        });
+
+        document.addEventListener('livewire:init', function () {
+            console.log( event);
+            // Initialize File Uploads
+             initFileUpload();
+
+
+        });
+
+         // Listen for Livewire updates if necessary
+         document.addEventListener('component.updated', function(event) {
+
+            console.log('fffffff') ;
+            // Re-initialize plugins if needed
+            initFileUpload();
+        });
+
+
+        function initFileUpload() {
+            $(document).ready(function() {
+            // Initialize your file upload plugin here
+            $('.dropify').dropify({
+                messages: {
+                    'default': 'Drag and drop a file here or click',
+                    'replace': 'Drag and drop or click to replace',
+                    'remove': 'Remove',
+                    'error': 'Ooops, something wrong appended.'
+                },
+                error: {
+                    'fileSize': 'The file size is too big (2M max).'
+                }
+            });
+
+            // Fancy uploader initialization
+            $('#demo').FancyFileUpload({
+                params : {
+                    action : 'fileuploader'
+                    },
+                maxfilesize : 1000000, // Set max file size to 1MB
+                onComplete: function (response) {
+                    console.log('Upload complete:', response);
+                    // Handle the response from the server here
+                },
+                onError: function (error) {
+                    console.error('Error during upload:', error);
+                    // Handle any errors here
+                }
+            });
+
+            console.log("hhhhhhhhhhhhhhhhhhh")
+        });
+        }
+
+    </script>
+</body>
+</html>
+
+{% endblock %}

@@ -118,9 +118,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/media/'  # URL pour accéder aux fichiers médias
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Chemin où les fichiers médias sont stockés
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'lxolalikokouguel@gmail.com'
-EMAIL_HOST_PASSWORD = 'Django'
+EMAIL_HOST_USER = 'lxolalikokouguel@gmail.com'  # Your Gmail address
+EMAIL_HOST_PASSWORD = 'vbtq wxvb gadu xthd'  # Your App Password
+DEFAULT_FROM_EMAIL = "ETS BIG-TRANSPORT <lxolalikokouguel@gmail.com>"

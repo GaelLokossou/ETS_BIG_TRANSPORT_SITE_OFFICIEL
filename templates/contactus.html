@@ -1,0 +1,204 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacter-nous</title>
+    <!--bootstrap-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- google fonts preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- style sheets and font icons  -->
+    <link rel="stylesheet" href="{% static 'css/stylepro.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script>
+        feather.replace();
+    </script>
+</head>
+<body>
+    <!-- DEBUT MENU -->
+    <nav class="nav-bar" id="acceuil">
+        <ul>
+            <li class="logo">ETS BIG-TRANSPORT</li>
+            <li class="menu"><a href="#a-propos">A-propos</a></li>
+            <li class="menu"><a href="#nos-services">Services</a></li>
+            <li class="menu"><a href="#produits-element">Produits</a></li>
+            <li class="menu"><a href="{% url 'contact-us' %}">Contact-nous</a></li>
+        </ul>
+        <form class="recherche" method="get" action="{% url 'search' %}">
+            <input class="search" name="search" type="search" placeholder="Recherche">
+            <a href="https://wa.me/+22896986875"><img src="{% static 'images/shopping-cart-fill.svg' %}" alt="shopping"></a>
+        </form>
+    </nav>
+    <!-- FIN MENU -->
+
+    <!-- start section -->
+    <section id="down-section">
+        <div class="container-fluid overflow-hidden position-relative pt-6 sm-pt-40px">
+            <img src="https://via.placeholder.com/605x580" class="position-absolute top-0 left-minus-300px z-index-minus-1" data-bottom-top="transform: rotate(0deg) translateY(0)" data-top-bottom="transform:rotate(-15deg) translateY(0)" alt=""/>
+            <div class="row justify-content-center mb-2 sm-mb-3">
+                <div class="col-lg-6 text-center" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
+                    <span class="ps-25px pe-25px mb-15px text-uppercase text-base-color fs-14 lh-42px fw-700 border-radius-100px bg-gradient-quartz-light-transparent d-inline-block">Get in touch with us</span>
+                    <h3 class="text-dark-gray fw-700 ls-minus-1px">Comment nous pouvons vous aidez ?</h3>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-xxl-6 col-xl-7 col-lg-11">
+                    <form method="post" class="contact-form-style-03">
+                        {% csrf_token %}
+                        <div class="row justify-content-center">
+                            <div class="col-md-6">
+                                <label class="form-label fw-600 text-dark-gray mb-0">Enter your name*</label>
+                                <div class="position-relative form-group mb-25px">
+                                    <span class="form-icon"><i class="bi bi-emoji-smile"></i></span>
+                                    <input class="ps-0 border-radius-0px border-color-extra-medium-gray bg-transparent form-control required" type="text" name="name" placeholder="What's your good name?" required />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-600 text-dark-gray mb-0">Email address*</label>
+                                <div class="position-relative form-group mb-25px">
+                                    <span class="form-icon"><i class="bi bi-envelope"></i></span>
+                                    <input class="ps-0 border-radius-0px border-color-extra-medium-gray bg-transparent form-control required" type="email" name="email" placeholder="Enter your email address" required />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-600 text-dark-gray mb-0">Phone number</label>
+                                <div class="position-relative form-group mb-25px">
+                                    <span class="form-icon"><i class="bi bi-telephone"></i></span>
+                                    <input class="ps-0 border-radius-0px border-color-extra-medium-gray bg-transparent form-control" type="tel" name="phone" placeholder="Enter your phone number" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-600 text-dark-gray mb-0">Subject</label>
+                                <div class="position-relative form-group mb-25px">
+                                    <span class="form-icon"><i class="bi bi-journals"></i></span>
+                                    <input class="ps-0 border-radius-0px border-color-extra-medium-gray bg-transparent form-control" type="text" name="subject" placeholder="How can we help you?" />
+                                </div>
+                            </div>
+                            <div class="col-12 mb-4">
+                                <label class="form-label fw-600 text-dark-gray mb-0">Your message</label>
+                                <div class="position-relative form-group form-textarea mb-0">
+                                    <textarea class="ps-0 border-radius-0px border-color-extra-medium-gray bg-transparent form-control" name="comment" placeholder="Describe about your project" rows="4" required></textarea>
+                                    <span class="form-icon"><i class="bi bi-chat-square-dots"></i></span>
+                                </div>
+                            </div>
+                            <div class="col-12 text-center">
+                                <button class="btn btn-medium btn-dark-gray btn-box-shadow btn-round-edge text-transform-none primary-font submit" type="submit">
+                                    Send message
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    
+                    {% if messages %}
+                        <div class="mt-3">
+                            {% for message in messages %}
+                                <div class="alert {% if message.tags == 'success' %}alert-success{% else %}alert-danger{% endif %}">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end section -->
+
+    <!-- start footer -->
+    <footer class="footer-light bg-gradient-very-light-gray pb-0">
+        <div class="container position-relative pt-3 pb-3 overlap-section md-mb-15px">
+            <div class="position-absolute left-0px top-0px background-no-repeat background-size-100 h-100 w-100 animation-float" style="background-image: url('https://via.placeholder.com/1190x262')"></div>
+        </div>
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <!-- start footer column -->
+                <div class="col-auto d-flex flex-column flex-md-row align-items-center text-center text-md-start">
+                    <div class="text-dark-gray fs-28 alt-font fw-500">Divers Materiaux de constructions <span class="fw-700 text-decoration-line-bottom">a vendre et a louer.</span></div>
+                    <div class="bg-white border-radius-50px d-flex align-items-center p-10px ps-35px ms-20px md-ps-20px md-ms-15px box-shadow-medium sm-m-20px">
+                        <a href="{% url 'contact-us' %}" class="text-dark-gray fs-22 alt-font fw-500 me-10px overflow-hidden">Dire, <span class="fw-700 w-65px text-start d-inline-block" data-fancy-text='{ "effect": "rotate", "string": ["Salut!", "Hi!", "Hello!"] }'></span></a>
+                        <span class="text-dark-gray h-45px w-45px text-center d-flex align-items-center justify-content-center border-radius-100 bg-base-color-transparent fs-20">&#128075;</span>
+                    </div>
+                </div>
+                <!-- end footer column -->
+            </div>
+            <div class="row justify-content-center mt-5 mb-4 sm-mb-35px">
+                <!-- start footer column -->
+                <div class="col-lg-3 last-paragraph-no-margin md-mb-35px text-center text-lg-start">
+                    <a href="#" class="footer-logo mb-10px d-inline-block"><img src="images/demo-real-estate-logo-black.png" data-at2x="images/demo-real-estate-logo-black@2x.png" alt=""></a>
+                    <p class="w-85 lg-w-100">Faite confiance a ETS BIG TRANSPORT pour tous vos besoins dans la construction.</p>
+                    <div class="elements-social social-icon-style-02 mt-15px">
+                        <ul class="small-icon dark">
+                            <li><a class="facebook" href="#" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
+                            <li><a class="dribbble" href="https://wa.me/+22896986875" target="_blank"><i class="fa-brands fa-whatsapp"></i></a></li> 
+                            <li><a class="twitter" href="#" target="_blank"><i class="fa-brands fa-tiktok"></i></a></li> 
+                            <li><a class="instagram" href="#" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- end footer column -->
+                <!-- start footer column -->
+                <div class="col-6 col-lg-2 col-md-3 sm-mb-25px">
+                    <span class="alt-font fs-18 fw-600 d-block text-dark-gray mb-5px">Entreprise</span>
+                    <ul>
+                        <li><a href="#" id="titre-annonce">A-propos</a></li>
+                        <li><a href="#" id="titre-annonce">Nos agents</a></li>
+                        <li><a href="#" id="titre-annonce">Dernier blog</a></li>
+                        <li><a href="{% url 'contact-us' %}" id="titre-annonce">Contact-nous</a></li>
+                    </ul>
+                </div>
+                <!-- end footer column -->
+                <!-- start footer column -->
+                <div class="col-6 col-lg-2 col-md-3 sm-mb-25px">
+                    <span class="alt-font fs-18 fw-600 d-block text-dark-gray mb-5px">Resources</span>
+                    <ul>
+                        <li><a href="{% url 'contact-us' %}" id="titre-annonce">Service de location</a></li>
+                        <li><a href="{% url 'contact-us' %}" id="titre-annonce">Achat</a></li>
+                        <li><a href="{% url 'contact-us' %}" id="titre-annonce">Service de demolition</a></li>
+                        <li><a href="{% url 'contact-us' %}" id="titre-annonce">Budget</a></li>
+                    </ul>
+                </div>
+                <!-- end footer column -->
+                <!-- start footer column -->
+                <div class="col-6 col-lg-2 col-md-3">
+                    <span class="alt-font fs-18 fw-600 d-block text-dark-gray mb-5px">Client</span>
+                    <ul>                           
+                        <li><a href="#"  id="titre-annonce">Assistance client</a></li>
+                        <li><a href="#"  id="titre-annonce">Centre d'aide</a></li>
+                        <li><a href="#"  id="titre-annonce">État du système</a></li>
+                        <li><a href="#"  id="titre-annonce">Retour</a></li>
+                    </ul>
+                </div>
+                <!-- end footer column -->
+                <!-- start footer column -->
+                <div class="col-6 col-lg-2 col-md-3">
+                    <span class="alt-font fs-18 fw-600 d-block text-dark-gray mb-10px">Dis bonjour</span>
+                    <span class="d-block lh-normal">Besoin d'aide ?</span>
+                    <a href="mailto:btbtp@gmail.com" class="text-dark-gray lh-22 d-inline-block mb-20px" id="titre-annonce">btbtp@gmail.com</a>
+                    <span class="d-block lh-normal">Service Client</span>
+                    <a href="tel:+22896986875" class="text-dark-gray lh-22 d-inline-block" id="titre-annonce">+228 96 98 68 75</a>
+                    <a href="tel:+22896986875" class="text-dark-gray lh-22 d-inline-block" id="titre-annonce">+228 97 86 87 47</a>
+                </div>
+                <!-- end footer column -->                     
+            </div>
+            <!-- start footer content -->
+            <div class="border-top border-color-extra-medium-gray pt-35px pb-35px text-center">
+                <span class="fs-13 w-60 lg-w-70 md-w-90 sm-w-100 d-block mx-auto lh-22">ETS BIG-TRANSPORT <a href="#" class="text-dark-gray text-decoration-line-bottom"  id="titre-annonce">politique de confidentialite</a> et <a href="#" class="text-dark-gray text-decoration-line-bottom"  id="titre-annonce">les termes de service</a> apply. You must not use this website if you disagree with any of these website standard terms and conditions.</span>
+            </div>
+            <!-- end footer content -->
+        </div> 
+    </footer>
+    <!-- end footer -->
+    <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/vendors.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
