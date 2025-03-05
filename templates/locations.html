@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<!-- start section -->
+<section class="overflow-hidden position-relative p-0">
+    <div class="opacity-very-light bg-dark-gray z-index-1"></div>
+    <div class="container-fluid">
+        <div class="row overlap-height">
+        <div class="col-12 p-0 position-relative overlap-gap-section">
+            <img src="{% static 'images/demo-corporate-bg-02.png' %}" alt="" class="w-100" style="height: 500px;">
+            <div class="alt-font fw-600 fs-250 lg-fs-275 md-fs-250 xs-fs-160 position-absolute right-minus-170px lg-right-0px bottom-130px md-bottom-minus-60px xs-bottom-minus-50px text-white text-outline ls-minus-5px lg-right-0px text-outline-width-2px z-index-2" data-bottom-top="transform: translate3d(80px, 0px, 0px);" data-top-bottom="transform: translate3d(-280px, 0px, 0px);">--Locations</div>
+        </div>
+    </div>
+</section>
+<!-- end section -->
+
+<!-- start page title -->
+<section class="cover-background page-title-big-typography ipad-top-space-margin">
+    <div class="container">
+        <div class="row align-items-center justify-content-center g-0">
+            <!-- Section gauche avec les titres -->
+            <div class="col-xxl-5 col-xl-6 col-lg-7 page-title-extra-small md-mb-30px"
+                    data-anime='{
+                    "el": "childs",
+                    "translateY": [30, 0],
+                    "opacity": [0,1],
+                    "duration": 600,
+                    "delay": 0,
+                    "staggervalue": 300,
+
+                    "easing": "easeOutQuad"
+                }'>
+                <h1 class="text-base-color">Acheter les materiaux essentiels pour vos constructions</h1>
+                <h2 class="alt-font text-dark-gray fw-500 ls-minus-1px shadow-none"
+                    data-shadow-animation="true"
+                    data-animation-delay="700">
+                    Nous vous aidons a trouver
+                    <span class="fw-300 text-highlight d-inline-block">les meilleurs.
+                        <span class="bg-base-color h-10px bottom-10px opacity-3 separator-animation"></span>
+                    </span>
+                </h2>
+            </div>
+
+            <!-- Section droite avec la description -->
+            <div class="col-lg-5 offset-xxl-2 offset-xl-1 border-start border-2 border-color-base-color ps-40px sm-ps-25px">
+                <span class="d-block w-85 lg-w-100 text-description"
+                        data-anime='{
+                            "el": "lines",
+                            "translateY": [15, 0],
+                            "opacity": [0,1],
+                            "duration": 600,
+                            "delay": 0,
+                            "staggervalue": 300,
+                            "easing": "easeOutQuad"
+                        }'>
+                    Materiaux de contrsutruction en ligne a acheter, et a louer pour vos travaux de constructions.
+                    Utiliser par plusieurs personnes aux Togo.
+                </span>
+            </div>
+        </div>
+    </section>
+<!-- end page title -->
+
+<!-- start section --> 
+<section class="bg-very-light-gray z-index-3 position-relative">
+    <div class="container"> 
+        <div class="row align-items-center mb-6 xs-mb-8">
+            <div class="col-md-8 text-center text-md-start sm-mb-20px">
+                <h3 class="alt-font text-dark-gray fw-500 mb-0 ls-minus-1px shadow-none">
+                    Nos produits en <span class="fw-700 text-highlight d-inline-block">
+                        location
+                        <span class="bg-base-color h-10px bottom-1px opacity-3 separator-animation">
+                        </span>
+                    </span>
+                </h3>
+            </div>
+            <div class="col-md-4">
+                <div class="d-flex justify-content-center justify-content-md-end">
+                    <a href="#" class="fw-600 alt-font text-dark-gray text-dark-gray-hover d-flex align-items-center">
+                        Voir tous les articles
+                        <span class="d-flex align-items-center justify-content-center bg-dark-gray h-40px w-40px text-center rounded-circle fs-16 text-white ms-10px">
+                            <i class="fa-brands fa-arrow-right" style="color: #ffffff;"></i>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row row-cols-1 row-cols-xl-3 row-cols-md-2 justify-content-center">
+            {% for annonce in annonces %}
+            <div class="col">
+                <div class="border-radius-6px overflow-hidden box-shadow-large">
+                    <div class="image position-relative">
+                        <a href="#">
+                            <img src="{{ annonce.photos.first.image.url }}" alt="{{ annonce.titre }}">
+                        </a>
+                        <div class="col-auto bg-base-color border-radius-50px ps-15px pe-15px text-uppercase alt-font fw-600 text-white fs-12 lh-24 position-absolute left-20px top-20px" style="color: #ffffff !important;">
+                            {{ annonce.category.titre|default:"Non classé" }}
+                        </div>
+                    </div> 
+                    <div class="bg-white">
+                        <div class="row ps-35px pe-35px pt-20px pb-20px md-ps-25px md-pe-25px align-items-center">
+                            <div class="col">
+                                <a href="#" class="alt-font text-dark-gray fw-700 fs-22 me-10px" id="titre-annonce">
+                                    {{ annonce.titre|truncatewords:5|default:"Titre indisponible" }}
+                                </a>
+                            </div>
+                            <div class="col text-end">
+                                <a href="#" class="btn btn-dark-gray btn-very-small btn-round-edge fw-600">
+                                    Commander
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row ps-35px pe-35px pt-20px pb-20px md-ps-25px md-pe-25px align-items-center">
+                            <div class="col">
+                                <a href="{% url 'detail-annonce' annonce.id%}" class="btn btn-dark-gray btn-very-small btn-round-edge fw-600">
+                                    Voir Plus
+                                </a>
+                            </div>
+                            <div class="col text-end">
+                                <span class="fs-20 alt-font text-dark-gray fw-700 mb-0">{{ annonce.prix|default:0 }} FCFA / m<sup>3</sup></span>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+            </div>  
+            {% endfor %}
+        </div> 
+        <div class="row justify-content-center">
+            <div class="mt-5 xs-mt-10 d-flex justify-content-center" data-anime='{ "translateY": [0, 0], "opacity": [0,1], "duration": 1200, "delay": 100, "staggervalue": 150, "easing": "easeOutQuad" }'>
+                <!-- start pagination -->
+                <ul class="pagination pagination-style-01 fs-13 alt-font fw-600 mb-0">
+                    <li class="page-item"><a class="page-link" href="#"><i class="feather icon-feather-arrow-left fs-18 d-xs-none"></i></a></li>
+                    <li class="page-item active"><a class="page-link" href="#">01</a></li>
+                    <li class="page-item"><a class="page-link" href="#">02</a></li>
+                    <li class="page-item"><a class="page-link" href="#">03</a></li>
+                    <li class="page-item"><a class="page-link" href="#">04</a></li>
+                    <li class="page-item"><a class="page-link" href="#"><i class="feather icon-feather-arrow-right fs-18 d-xs-none"></i></a></li>
+                </ul>
+                <!-- end pagination -->
+            </div> 
+        </div>
+    </div>
+</section>
+<!-- end section -->
+<!-- start section -->
+<section class="bg-very-light-gray z-index-3 position-relative">
+    <div class="container">
+
+    </div>
+</section>
+<!-- end section -->
+
+{% endblock content %}

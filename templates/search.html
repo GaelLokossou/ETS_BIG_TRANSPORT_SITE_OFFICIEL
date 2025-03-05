@@ -1,37 +1,62 @@
+{% extends "base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>recherche</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
+
+{% block content %}
+
 <h2 class="search-succes">Résultats de la recherche</h2>
 <form class="recherche" method="get" action="{% url 'search' %}">
     <input class="search" name="search" type="search" placeholder="Recherche" value="{{ query }}">
 </form>
 
-<section class="produits" id="voir-plus produits">
-    <h2>Nos <span class="span">Produits</span></h2>
+<!-- start section --> 
+<section class="bg-very-light-gray">
+    <div class="container">
 
     {% if donnees %}
-        <div class="produit">
-            {% for produit in donnees %}
-                <div class="element">
-                    <img src="{{ produit.image.url }}" alt="{{ produit.name }}">
-                    <h3>{{ produit.name }}</h3>
-                    <p>{{ produit.description }}</p>
-                    <div class="btn-produit">
-                        <a href="https://wa.me/message/GP3FPGUQQJPIG1" class="btn">COMMANDER</a>
+        <div class="row row-cols-1 row-cols-xl-3 row-cols-md-2 justify-content-center">
+            {% for annonce in donnees %}
+                <div class="col">
+                    <div class="border-radius-6px overflow-hidden box-shadow-large">
+                        <div class="image position-relative">
+                            <a href="#">
+                                <img src="{{ annonce.photos.first.image.url }}" alt="{{ annonce.titre }}">
+                            </a>
+                            <div class="col-auto bg-base-color border-radius-50px ps-15px pe-15px text-uppercase alt-font fw-600 text-white fs-12 lh-24 position-absolute left-20px top-20px" style="color: #ffffff !important;">
+                                {{ annonce.category.titre|default:"Non classé" }}
+                            </div>
+                        </div> 
+                        <div class="bg-white">
+                            <div class="row ps-35px pe-35px pt-20px pb-20px md-ps-25px md-pe-25px align-items-center">
+                                <div class="col">
+                                    <a href="#" class="alt-font text-dark-gray fw-700 fs-22 me-10px" id="titre-annonce">
+                                        {{ annonce.titre|truncatewords:5|default:"Titre indisponible" }}
+                                    </a>
+                                </div>
+                                <div class="col text-end">
+                                    <a href="#" class="btn btn-dark-gray btn-very-small btn-round-edge fw-600">
+                                        Commander
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row ps-35px pe-35px pt-20px pb-20px md-ps-25px md-pe-25px align-items-center">
+                                <div class="col">
+                                    <a href="#" class="btn btn-dark-gray btn-very-small btn-round-edge fw-600">
+                                        Voir Plus
+                                    </a>
+                                </div>
+                                <div class="col text-end">
+                                    <span class="fs-20 alt-font text-dark-gray fw-700 mb-0">{{ annonce.prix|default:0 }} FCFA / m<sup>3</sup></span>
+                                </div> 
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </div>  
             {% endfor %}
         </div>
     {% else %}
-    <h1 class="search-erreur">Aucune recherche ne correspond à "{{ query }}"</h1>
+        <h1 class="search-erreur" style="color: #f310109d">Aucune recherche ne correspond à "{{ query }}"</h1>
     {% endif %}
+    </div>
 </section>
-</body>
-</html>
+
+{% endblock content %}

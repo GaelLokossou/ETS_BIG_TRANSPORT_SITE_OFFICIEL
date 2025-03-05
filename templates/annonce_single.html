@@ -1,0 +1,225 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<!-- start page title -->
+<section class="cover-background page-title-big-typography ipad-top-space-margin">
+    <div class="container">
+        <div class="row align-items-center align-items-lg-end justify-content-center extra-very-small-screen g-0">
+            <div class="col-xl-7 col-lg-8 position-relative page-title-extra-small md-mb-30px md-mt-auto" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
+                <h3 class="alt-font fw-600 text-dark-gray mb-15px ls-minus-1px">{{ annonce.titre }}</h3>
+                <h1 class="mb-0 d-flex">
+                    <i class="feather icon-feather-map-pin icon-extra-medium text-base-color me-5px"></i>
+                    {{ annonce.description }}
+                </h1>
+            </div>
+            <div class="col-lg-3 offset-xl-2 offset-lg-1 border-start border-2 border-color-base-color ps-40px sm-ps-25px md-mb-auto">
+                <h4 class="text-dark-gray fw-700 alt-font mb-5px">{{ annonce.prix }} FCFA</h4>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end page title -->
+ <!-- start section -->
+<section class="position-relative">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 md-mb-50px">
+                <div class="row mb-15px">
+                    <div class="col-12">
+                        <span class="text-dark-gray fs-24 fw-600 alt-font mb-15px d-block">Description de l'annonce</span>
+                        <p>{{ annonce.description }}</p>
+                    </div>
+                </div>
+                <div class="row mt-7">
+                    <div class="col-12">
+                        {% for image in annonce.photos.all %}
+                            <img src="{{ image.image.url }}" alt="Image" class="responsive-image" style="width: 300px; height: 300px; padding:3px;">
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 offset-xl-1 col-lg-5">
+                <div class="bg-base-color-light border-radius-6px position-sticky top-120px">
+                    <div class="bg-base-color border-radius-6px feature-box feature-box-left-icon-middle overflow-hidden icon-with-text-style-08 ps-35px pe-35px pt-25px pb-20px xs-p-25px">
+                        <!-- start features box item -->
+                        <div class="feature-box-icon feature-box-icon-rounded w-90px h-90px overflow-visible me-20px position-relative">
+                            <img src="https://via.placeholder.com/148x148" class="rounded-circle" alt="">
+                            <span class="animation-zoom d-inline-block bg-orange border border-2 border-color-white h-20px w-20px border-radius-100 position-absolute right-0px top-5px"></span>
+                        </div>
+                        <!-- end features box item -->
+                        <!-- start features box item -->
+                        <div class="feature-box-content last-paragraph-no-margin">
+                            <span class="text-white alt-font fw-600 fs-20 d-block">COMMANDER ICI</span>
+                        </div>
+                        <!-- end features box item -->
+                    </div>
+                <div class="ps-45px pe-45px pt-35px pb-45px xs-p-25px contact-form-style-01 mt-0">
+                    <div class="mb-20px last-paragraph-no-margin">
+                        <p class="mb-0 alt-font fw-500 text-dark-gray"><i class="feather icon-feather-phone-call icon-small text-base-color me-10px"></i><span class="fw-600 w-20 sm-w-15 xs-w-20 d-inline-block">Phone:</span><a href="tel:12345678910" class="text-dark-gray text-base-color-hover">+1 234 567 8910</a></p>
+                        <p class="alt-font fw-500 text-dark-gray"><i class="feather icon-feather-mail icon-small text-base-color me-10px"></i><span class="fw-600 w-20 sm-w-15 xs-w-20 d-inline-block">Email:</span><a href="mailto:info@domain.com" class="text-dark-gray text-decoration-line-bottom">info@domain.com</a></p>
+                    </div>
+                    <span class="alt-font fs-20 fw-600 text-dark-gray d-block mb-25px">Laisser votre message ici</span>
+                    <form class="form-commander" method="post">
+                        {% csrf_token %}
+                        
+                        <div class="position-relative form-group mb-15px">
+                            <span class="form-icon"><i class="bi bi-emoji-smile"></i></span>
+                            <input type="text" name="name" class="form-control border-color-white box-shadow-large" required placeholder="Votre nom*" />
+                        </div>
+                    
+                        <div class="position-relative form-group mb-15px">
+                            <span class="form-icon"><i class="bi bi-emoji-smile"></i></span>
+                            <input type="text" name="lieu" class="form-control border-color-white box-shadow-large" required placeholder="Entrez le lieu ou le quartier du chantier" required>
+                        </div>
+                    
+                        <div class="position-relative form-group mb-15px">
+                            <span class="form-icon"><i class="bi bi-telephone-outbound"></i></span>
+                            <input type="tel" name="number" class="form-control border-color-white box-shadow-large" placeholder="Entrez votre numéro de téléphone" required>
+                        </div>
+                    
+                        <div class="position-relative form-group mb-15px">
+                            <span class="form-icon"><i class="bi bi-chat-square-dots"></i></span>
+                            <select id="choix-principal" name="choix_principal" class="form-control border-color-white box-shadow-large" placeholder="Choisissez une option : TYPE DE CAMION / NOMBRE DE CUBAGE" required>
+                                <option value="" disabled selected>Type de camion / nombre de cubage</option>
+                                <option value="type_camion">Type de camion</option>
+                                <option value="nombre_cubage">Nombre de cubage</option>
+                            </select>
+                        </div>
+                    
+                        <div id="camion-section" style="display: none;">
+                            <div class="position-relative form-group mb-15px">
+                                <select id="camion-type" name="camion_type" class="form-control border-color-white box-shadow-large" placeholder="Type de camion">
+                                    <option value="" disabled selected>Choisissez un type de camion</option>
+                                    <option value="6_roues">Camion 6 roues</option>
+                                    <option value="10_roues">Camion 10 roues</option>
+                                    <option value="sinotruk">Camion Sinotruk</option>
+                                    <option value="remorque">Camion Remorque</option>
+                                </select>
+                            </div>
+                    
+                            <div class="position-relative form-group mb-15px">
+                                <span class="form-icon"><i class="bi bi-chat-square-dots"></i></span>
+                                <input type="text" id="nombre_voyage" name="nombre_voyage" class="form-control border-color-white box-shadow-large" min="1" max="100000" placeholder="Entrez le nombre de voyage">
+                            </div>
+                        </div>
+                    
+                        <div id="cubage-section" style="display: none;">
+                            <div class="position-relative form-group mb-15px">
+                                <span class="form-icon"><i class="bi bi-chat-square-dots"></i></span>
+                                <input type="text" id="cubage" name="cubage" class="form-control border-color-white box-shadow-large" min="1" max="100000" placeholder="Entrez le nombre de cubage">
+                            </div>
+                        </div>
+                    
+                        <button type="submit" class="btn btn-small btn-round-edge btn-base-color mt-20px">Envoyer</button>
+                    </form>
+                </div> 
+            </div>
+                
+            </div>
+        </div>
+        <!-- end sticky -->
+    </div>
+</div>
+</section>
+
+<!-- start section -->
+<section class="bg-gradient-very-light-gray">
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-12 text-center">
+                <h3 class="alt-font text-dark-gray fw-500 ls-minus-1px shadow-none" data-shadow-animation="true" data-animation-delay="700">
+                    Propriétés <span class="fw-700 text-highlight d-inline-block">similaires<span class="bg-base-color h-10px bottom-5px opacity-3 separator-animation"></span></span>
+                </h3>
+            </div>
+        </div>
+        <div class="row row-cols-1 row-cols-xl-3 row-cols-lg-2 row-cols-md-2 justify-content-center">
+            {% for annonce in annonces %} <!-- Boucle sur les annonces -->
+            <!-- start box item -->
+            <div class="col mb-30px">
+                <div class="border-radius-6px overflow-hidden box-shadow-large">
+                    <div class="image position-relative">
+                        <div class="col-auto bg-orange border-radius-50px ps-15px pe-15px text-uppercase alt-font fw-600 text-white fs-12 lh-24 position-absolute left-20px top-20px">
+                            {% if annonce.category %}
+                                {{ annonce.category.titre }}
+                            {% else %}
+                                Aucune catégorie
+                            {% endif %}
+                        </div>
+                        <a href="{% url 'detail_annonce' annonce.id %}"> <!-- Lien vers l'annonce -->
+                            <img src="{{ annonce.images.first.path.url }}" alt="{{ annonce.titre }}" style="width: 100%; height: 100%;">
+                        </a>
+                        <div class="col-auto bg-base-color border-radius-50px ps-15px pe-15px text-uppercase alt-font fw-600 text-white fs-12 lh-24 position-absolute left-20px top-20px">{{ annonce.category.titre }}</div> <!-- Type de l'annonce (Vente/Location) -->
+                    </div>
+                    <div class="bg-white">
+                        <div class="content ps-40px pe-40px pt-35px pb-35px md-p-25px border-bottom border-color-transparent-dark-very-light">
+                            <div class="d-flex align-items-center">
+                                <a href="{% url 'detail_annonce' annonce.id %}" class="alt-font text-dark-gray fw-700 fs-22 me-10px">{{ annonce.titre }}</a> <!-- Titre de l'annonce -->
+                            </div>
+                            <p class="mb-20px">{{ annonce.description }}</p> <!-- Adresse de l'annonce -->
+                            <div class="row g-0">
+                            </div>
+                        </div>
+                        <div class="row ps-35px pe-35px pt-20px pb-20px md-ps-25px md-pe-25px align-items-center">
+                            <div class="col">
+                                <a href="{% url 'detail_annonce' annonce.id %}" class="btn btn-dark-gray btn-very-small btn-round-edge fw-600">Détails</a> <!-- Bouton détails -->
+                            </div>
+                            <div class="col text-end">
+                                <span class="fs-24 alt-font text-dark-gray fw-700 mb-0">{{ annonce.prix }} FCFA</span> <!-- Prix de l'annonce -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end box item -->
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<!-- end section -->
+<!-- start scroll progress -->
+<div class="scroll-progress d-none d-xxl-block">
+    <a href="#" class="scroll-top" aria-label="scroll">
+        <span class="scroll-text">Scroll</span><span class="scroll-line"><span class="scroll-point"></span></span>
+    </a>
+</div>
+<!-- end scroll progress -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const carousel = new bootstrap.Carousel(document.getElementById('imageCarousel'), {
+        interval: 5000, // Automatiquement passer à l'image suivante toutes les 5 secondes
+        ride: 'carousel' // Démarre le carrousel automatiquement à l'ouverture
+    });
+
+    const prevButton = document.querySelector('.carousel-control-prev');
+    const nextButton = document.querySelector('.carousel-control-next');
+
+    prevButton.addEventListener('click', () => {
+        carousel.prev();
+    });
+
+    nextButton.addEventListener('click', () => {
+        carousel.next();
+    });
+    });
+
+</script>
+<script>
+    document.getElementById("choix-principal").addEventListener("change", function() {
+        var choix = this.value;
+        if (choix === "type_camion") {
+            document.getElementById("camion-section").style.display = "block";
+            document.getElementById("cubage-section").style.display = "none";
+        } else if (choix === "nombre_cubage") {
+            document.getElementById("cubage-section").style.display = "block";
+            document.getElementById("camion-section").style.display = "none";
+        } else {
+            document.getElementById("camion-section").style.display = "none";
+            document.getElementById("cubage-section").style.display = "none";
+        }
+    });
+</script>
+
+
+{% endblock content %}

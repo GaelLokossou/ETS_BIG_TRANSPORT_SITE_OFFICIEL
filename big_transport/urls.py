@@ -16,7 +16,11 @@ urlpatterns = [
     path('admin-site/create-categorie/', views.create_categorie, name='create-categorie'),
     path('admin-site/annonce/<int:annonce_id>/supprimer/', views.supprimer_annonce, name='supprimer-annonce'),
     path('annonce/modifier/<int:annonce_id>/', views.edit_annonce, name='edit-annonce'),
-    path('contacter/', views.contact_view, name='contact-us'),
+    path('annonce/<int:annonce_id>/', views.detail_annonce, name='detail-annonce'),
+    path('contact/', views.contact_view, name='contact-us'),
+    path('produits/', views.produits, name='produits'),
+    path('locations/', views.locations, name='locations'),
+    path('agents/', views.agents, name='agents'),
 ]
 
 from django.conf import settings

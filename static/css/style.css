@@ -20,7 +20,6 @@
     align-items: center;
     text-align: center;
     color: white;
-    text-transform: uppercase;
     position: fixed;
     z-index: 100;
 }

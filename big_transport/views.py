@@ -11,7 +11,7 @@ def index(request):
 
 def search(request):
     query = request.GET.get('search', '')  # Récupère la valeur de la recherche
-    donnees = Annonces.objects.filter(name__icontains=query) if query else []  # Recherche dans la base de données
+    donnees = Annonces.objects.filter(titre__icontains=query) if query else []  # Recherche dans la base de données
 
     context = {
         'donnees': donnees,
@@ -146,6 +146,9 @@ def annonce_index(request):
     # Passer les annonces à la vue
     return render(request, 'admin/annonce_index.html', {'annonces': annonces_page})
 
+def detail_annonce(request, annonce_id):
+    annonce = get_object_or_404(Annonces, id=annonce_id)
+    return render(request, 'annonce_single.html', {'annonce': annonce})
 def create_annonce(request):
     categories = Categories.objects.all()  # Récupère toutes les catégories
 
@@ -257,9 +260,108 @@ def contact_view(request):
                 subject=subject,
                 message=message
             )
-            messages.success(request, "Your message has been sent successfully!")
+            messages.success(request, "Votre message a été envoyée avec succès!")
+            html_message = f"""
+                <html>
+                <head>
+                    <style>
+                        body {{ font-family: Arial, sans-serif; }}
+                        .header {{
+                            background-color: #663399;
+                            color: white;
+                            padding: 10px;
+                            text-align: center;
+                        }}
+                        .content {{ padding: 10px; }}
+                        .footer {{
+                            text-align: center;
+                            background-color: #6A0DAD;
+                            color: white;
+                            padding: 10px;
+                            margin-top: 20px;
+                        }}
+                        table {{
+                            width: 100%;
+                            border-collapse: collapse;
+                            margin-top: 10px;
+                        }}
+                        th, td {{
+                            border: 1px solid #ddd;
+                            padding: 8px;
+                            text-align: left;
+                        }}
+                        th {{
+                            background-color: #663399;
+                            color: white;
+                        }}
+                    </style>
+                </head>
+                <body>
+                    <div class="header">
+                        <h2>📢 Nouvelle Commande Reçue !</h2>
+                    </div>
+                    <div class="content">
+                        <p>Une nouvelle commande a été passée par <strong>{name}</strong>.</p>
+                        <h3>Détails de la commande :</h3>
+                        <table>
+                            <tr><th>Nom</th><td>{name}</td></tr>
+                            <tr><th>Téléphone</th><td>{phone}</td></tr>
+                            <tr><th>Email</th><td>{email}</td></tr>
+                            <tr><th>Object</th><td>{subject}</td></tr>
+                            <tr><th>Message</th><td>{message}</td></tr>
+                        </table>
+                    </div>
+                    <div class="footer">
+                        <p>Merci de traiter cette commande rapidement.</p>
+                    </div>
+                </body>
+                </html>
+            """
+
+            # Version texte brut pour les clients qui ne supportent pas HTML
+            plain_message = strip_tags(html_message)
+
+            # Envoi de l'email
+            email = EmailMessage(
+                subject=f"Nouvelle message de {name}",
+                body=html_message,
+                from_email="lxolalikokouguel@gmail.com",
+                to=["lxolalikokouguel@gmail.com"],
+            )
+            email.content_subtype = "html"  # Indique que le contenu est HTML
+            email.send()
             return redirect('index')
         else:
             messages.error(request, "Please fill in all required fields.")
 
     return render(request, 'contactus.html')
+
+def produits(request):
+    # Exemple de filtrage selon la catégorie
+    category_name = "Location1"  # Tu peux adapter cette variable pour qu'elle provienne d'une requête ou d'une logique dynamique
+    annonces = Annonces.objects.filter(category__titre=category_name)
+
+    context = {
+        'annonces': annonces,
+    }
+
+    return render(request, "produits.html", context)
+
+def locations(request):
+    # Exemple de filtrage selon la catégorie
+    category_name = "Location2"  # Tu peux adapter cette variable pour qu'elle provienne d'une requête ou d'une logique dynamique
+    annonces = Annonces.objects.filter(category__titre=category_name)
+
+    context = {
+        'annonces': annonces,
+    }
+
+    return render(request, "locations.html", context)
+
+def agents(request):
+    # agents = Agents.objects.select.all()
+    # context = {
+    #     'agents' : agents,
+    # }
+
+    return render(request, "agents.html")
