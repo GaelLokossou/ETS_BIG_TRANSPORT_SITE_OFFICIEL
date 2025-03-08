@@ -9,13 +9,16 @@
         <div class="row align-items-center align-items-lg-end justify-content-center extra-very-small-screen g-0">
             <div class="col-xl-7 col-lg-8 position-relative page-title-extra-small md-mb-30px md-mt-auto" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
                 <h3 class="alt-font fw-600 text-dark-gray mb-15px ls-minus-1px">{{ annonce.titre }}</h3>
-                <h1 class="mb-0 d-flex">
-                    <i class="feather icon-feather-map-pin icon-extra-medium text-base-color me-5px"></i>
-                    {{ annonce.description }}
-                </h1>
             </div>
             <div class="col-lg-3 offset-xl-2 offset-lg-1 border-start border-2 border-color-base-color ps-40px sm-ps-25px md-mb-auto">
-                <h4 class="text-dark-gray fw-700 alt-font mb-5px">{{ annonce.prix }} FCFA</h4>
+                <h4 class="text-dark-gray fw-700 alt-font">
+                    {{ annonce.prix|default:0 }} FCFA 
+                    {% if annonce.category.titre == "VENTE" %}
+                        / m<sup>3</sup>
+                    {% elif annonce.category.titre == "LOCATION" %}
+                        / JOURNALIER
+                    {% endif %}
+                </h4>
             </div>
         </div>
     </div>
@@ -57,63 +60,11 @@
                     </div>
                 <div class="ps-45px pe-45px pt-35px pb-45px xs-p-25px contact-form-style-01 mt-0">
                     <div class="mb-20px last-paragraph-no-margin">
-                        <p class="mb-0 alt-font fw-500 text-dark-gray"><i class="feather icon-feather-phone-call icon-small text-base-color me-10px"></i><span class="fw-600 w-20 sm-w-15 xs-w-20 d-inline-block">Phone:</span><a href="tel:12345678910" class="text-dark-gray text-base-color-hover">+1 234 567 8910</a></p>
-                        <p class="alt-font fw-500 text-dark-gray"><i class="feather icon-feather-mail icon-small text-base-color me-10px"></i><span class="fw-600 w-20 sm-w-15 xs-w-20 d-inline-block">Email:</span><a href="mailto:info@domain.com" class="text-dark-gray text-decoration-line-bottom">info@domain.com</a></p>
+                        <p class="mb-0 alt-font fw-500 text-dark-gray"><i class="feather icon-feather-phone-call icon-small text-base-color me-10px"></i><span class="fw-600 w-20 sm-w-15 xs-w-20 d-inline-block">Phone:</span><a href="tel:+22896986875" class="text-dark-gray text-base-color-hover">+228 96 98 68 75</a></p>
+                        <p class="mb-0 alt-font fw-500 text-dark-gray"><i class="feather icon-feather-phone-call icon-small text-base-color me-10px"></i><span class="fw-600 w-20 sm-w-15 xs-w-20 d-inline-block">Phone:</span><a href="tel:+22896986875" class="text-dark-gray text-base-color-hover">+228 97 86 87 47</a></p>
+                        <p class="alt-font fw-500 text-dark-gray"><i class="feather icon-feather-mail icon-small text-base-color me-10px"></i><span class="fw-600 w-20 sm-w-15 xs-w-20 d-inline-block">Email:</span><a href="mailto:btbtp@75gmail.com" class="text-dark-gray text-decoration-line-bottom">btbtp@75gmail.com</a></p>
                     </div>
-                    <span class="alt-font fs-20 fw-600 text-dark-gray d-block mb-25px">Laisser votre message ici</span>
-                    <form class="form-commander" method="post">
-                        {% csrf_token %}
-                        
-                        <div class="position-relative form-group mb-15px">
-                            <span class="form-icon"><i class="bi bi-emoji-smile"></i></span>
-                            <input type="text" name="name" class="form-control border-color-white box-shadow-large" required placeholder="Votre nom*" />
-                        </div>
-                    
-                        <div class="position-relative form-group mb-15px">
-                            <span class="form-icon"><i class="bi bi-emoji-smile"></i></span>
-                            <input type="text" name="lieu" class="form-control border-color-white box-shadow-large" required placeholder="Entrez le lieu ou le quartier du chantier" required>
-                        </div>
-                    
-                        <div class="position-relative form-group mb-15px">
-                            <span class="form-icon"><i class="bi bi-telephone-outbound"></i></span>
-                            <input type="tel" name="number" class="form-control border-color-white box-shadow-large" placeholder="Entrez votre numéro de téléphone" required>
-                        </div>
-                    
-                        <div class="position-relative form-group mb-15px">
-                            <span class="form-icon"><i class="bi bi-chat-square-dots"></i></span>
-                            <select id="choix-principal" name="choix_principal" class="form-control border-color-white box-shadow-large" placeholder="Choisissez une option : TYPE DE CAMION / NOMBRE DE CUBAGE" required>
-                                <option value="" disabled selected>Type de camion / nombre de cubage</option>
-                                <option value="type_camion">Type de camion</option>
-                                <option value="nombre_cubage">Nombre de cubage</option>
-                            </select>
-                        </div>
-                    
-                        <div id="camion-section" style="display: none;">
-                            <div class="position-relative form-group mb-15px">
-                                <select id="camion-type" name="camion_type" class="form-control border-color-white box-shadow-large" placeholder="Type de camion">
-                                    <option value="" disabled selected>Choisissez un type de camion</option>
-                                    <option value="6_roues">Camion 6 roues</option>
-                                    <option value="10_roues">Camion 10 roues</option>
-                                    <option value="sinotruk">Camion Sinotruk</option>
-                                    <option value="remorque">Camion Remorque</option>
-                                </select>
-                            </div>
-                    
-                            <div class="position-relative form-group mb-15px">
-                                <span class="form-icon"><i class="bi bi-chat-square-dots"></i></span>
-                                <input type="text" id="nombre_voyage" name="nombre_voyage" class="form-control border-color-white box-shadow-large" min="1" max="100000" placeholder="Entrez le nombre de voyage">
-                            </div>
-                        </div>
-                    
-                        <div id="cubage-section" style="display: none;">
-                            <div class="position-relative form-group mb-15px">
-                                <span class="form-icon"><i class="bi bi-chat-square-dots"></i></span>
-                                <input type="text" id="cubage" name="cubage" class="form-control border-color-white box-shadow-large" min="1" max="100000" placeholder="Entrez le nombre de cubage">
-                            </div>
-                        </div>
-                    
-                        <button type="submit" class="btn btn-small btn-round-edge btn-base-color mt-20px">Envoyer</button>
-                    </form>
+                    <a href="{% url 'commander' %}" class="btn btn-white btn-large border-1 btn-round-edge btn-box-shadow me-15px xs-mt-10px xs-mb-10px">Commander</a>
                 </div> 
             </div>
                 

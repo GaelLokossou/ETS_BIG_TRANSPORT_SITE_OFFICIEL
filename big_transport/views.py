@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib import messages
-from big_transport_app.models import Commander, ContactMessage, Categories, Annonces, AnnoncePhoto
+from big_transport_app.models import Commander, ContactMessage, Categories, Annonces, AnnoncePhoto, Agents
 from django.core.mail import send_mail
 
 def index(request):
@@ -120,7 +120,7 @@ def commander(request):
             subject=f"Nouvelle commande #{commande_id} de {name}",
             body=html_message,
             from_email="lxolalikokouguel@gmail.com",
-            to=["lxolalikokouguel@gmail.com"],
+            to=["btbtp@75gmail.com"],
         )
         email.content_subtype = "html"  # Indique que le contenu est HTML
         email.send()
@@ -246,13 +246,15 @@ from django.contrib import messages
 
 def contact_view(request):
     if request.method == 'POST':
-        name = request.POST.get('name')
-        email = request.POST.get('email')
-        phone = request.POST.get('phone', '')
-        subject = request.POST.get('subject', '')
-        message = request.POST.get('comment')
+        name = request.POST.get('name', '').strip()
+        email = request.POST.get('email', '').strip()
+        phone = request.POST.get('phone', '').strip()
+        subject = request.POST.get('subject', '').strip()
+        message = request.POST.get('comment', '').strip()
 
-        if name and email and message:
+        if not name or not email or not message:
+            messages.error(request, "Veuillez remplir tous les champs obligatoires.")
+        else:
             ContactMessage.objects.create(
                 name=name,
                 email=email,
@@ -260,7 +262,7 @@ def contact_view(request):
                 subject=subject,
                 message=message
             )
-            messages.success(request, "Votre message a été envoyée avec succès!")
+            messages.success(request, "Votre message a été envoyé avec succès!")
             html_message = f"""
                 <html>
                 <head>
@@ -326,19 +328,18 @@ def contact_view(request):
                 subject=f"Nouvelle message de {name}",
                 body=html_message,
                 from_email="lxolalikokouguel@gmail.com",
-                to=["lxolalikokouguel@gmail.com"],
+                to=["btbtp@75gmail.com"],
             )
             email.content_subtype = "html"  # Indique que le contenu est HTML
             email.send()
-            return redirect('index')
-        else:
-            messages.error(request, "Please fill in all required fields.")
+        return redirect('contact-us')
 
     return render(request, 'contactus.html')
 
+
 def produits(request):
     # Exemple de filtrage selon la catégorie
-    category_name = "Location1"  # Tu peux adapter cette variable pour qu'elle provienne d'une requête ou d'une logique dynamique
+    category_name = "VENTE"  # Tu peux adapter cette variable pour qu'elle provienne d'une requête ou d'une logique dynamique
     annonces = Annonces.objects.filter(category__titre=category_name)
 
     context = {
@@ -349,7 +350,7 @@ def produits(request):
 
 def locations(request):
     # Exemple de filtrage selon la catégorie
-    category_name = "Location2"  # Tu peux adapter cette variable pour qu'elle provienne d'une requête ou d'une logique dynamique
+    category_name = "LOCATION"  # Tu peux adapter cette variable pour qu'elle provienne d'une requête ou d'une logique dynamique
     annonces = Annonces.objects.filter(category__titre=category_name)
 
     context = {
@@ -358,10 +359,38 @@ def locations(request):
 
     return render(request, "locations.html", context)
 
-def agents(request):
-    # agents = Agents.objects.select.all()
-    # context = {
-    #     'agents' : agents,
-    # }
 
-    return render(request, "agents.html")
+from django.core.files.storage import default_storage
+from django.core.files.base import ContentFile
+
+def agents_index(request):
+    agents = Agents.objects.all()
+    return render(request, 'admin/agent_index.html', {'agents': agents})
+
+def agents(request):
+    agents = Agents.objects.all()
+    return render(request, 'agents.html', {'agents': agents})
+
+def create_agent(request):
+    if request.method == 'POST':
+        nom = request.POST.get('nom')
+        prenoms = request.POST.get('prenoms')
+        poste = request.POST.get('poste')
+        description = request.POST.get('description')
+        image = request.FILES.get('photos')  # Récupère le fichier image
+
+        # Validation basique (à améliorer)
+        if not nom or not prenoms or not poste or not description or not image:
+            messages.error(request, 'Tous les champs sont obligatoires.')
+            return render(request, 'admin/create_agent.html')  # Retourne au formulaire avec l'erreur
+
+        try:
+            agent = Agents(nom=nom, prenoms=prenoms, poste=poste, description=description, image=image)
+            agent.save()  # Sauvegarde l'agent avec l'image
+            messages.success(request, 'Agent créé avec succès!')
+            return redirect('agents')
+        except Exception as e:
+            messages.error(request, f'Erreur lors de la création de l\'agent: {e}')
+            return render(request, 'admin/create_agent.html')
+    else:
+        return render(request, 'admin/create_agent.html')

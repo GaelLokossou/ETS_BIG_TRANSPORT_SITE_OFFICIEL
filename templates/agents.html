@@ -1,7 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block title %}Agents{% endblock %}
+
 {% block content %}
+
 
 <!-- start section -->
 <section class="overflow-hidden position-relative p-0">
@@ -110,166 +113,33 @@
                     </div>
                 </div>
                 <div class="row row-cols-1 row-cols-xl-4 row-cols-lg-3 row-cols-sm-2 justify-content-center mb-6 xs-mb-10" data-anime='{ "el": "childs", "perspective": [900, 1200], "scaleY": [1.1, 1], "rotateY": [-30, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
-                    <!-- start team member item -->
-                    <div class="col team-style-06 mb-30px">
-                        <div class="d-flex flex-column p-40px pb-20px lg-p-30px text-center border-radius-6px bg-white box-shadow-quadruple-large position-relative">
+                <!-- Début de la boucle pour afficher les agents -->
+                {% for agent in agents %}
+                <!-- start team member item -->
+                <div class="col-xl-3 col-lg-3 col-md-6 mb-3"> <!-- Ajustement des colonnes pour un affichage responsive -->
+                    <div class="card team-style-06">
+                        <div class="card-body d-flex flex-column p-3 text-center border-radius-6px bg-white box-shadow-quadruple-large position-relative">
                             <div class="position-relative">
-                                <a href="#" class="d-inline-block position-relative"><img class="rounded-circle w-150px h-150px mb-20px" src="https://via.placeholder.com/200x200" alt="">   
-                                    <span class="fs-13 fw-600 text-dark-gray alt-font lh-30 position-absolute top-25px right-minus-40px border-radius-30px bg-yellow ps-15px pe-15px"><i class="fa-solid fa-star"></i> 4.9</span></a>
+                                <a href="#" class="d-inline-block position-relative">
+                                    <img class="rounded-circle w-150px h-150px mb-20px" src="{{ agent.image.url }}" alt="{{ agent.nom }} {{ agent.prenoms }}">
+                                    <!-- <span class="fs-13 fw-600 text-dark-gray alt-font lh-30 position-absolute top-25px right-minus-40px border-radius-30px bg-yellow ps-15px pe-15px"><i class="fa-solid fa-star"></i> 4.9</span>  -->
+                                </a>
                             </div>
-                            <a href="#" class="text-dark-gray alt-font fs-19 fw-600 mb-5px">Xolali Kokou Guel LOKOSSOU</a>
-                            <p class="w-90 mx-auto lh-28">I'm Evan, Expert in  <span class="text-dark-gray text-decoration-line-bottom fw-500">Directeur</span>  General.</p>
+                            <a href="#" class="text-dark-gray alt-font fs-19 fw-600 mb-5px">{{ agent.nom }} {{ agent.prenoms }}</a>
+                            <p class="w-90 mx-auto lh-28">{{ agent.description|truncatechars:100 }}</p> <!-- Limite la description à 100 caractères -->
                             <div class="text-center elements-social social-icon-style-02 border-top border-color-light-medium-gray w-100 pt-15px">
                                 <ul class="small-icon dark">
-                                    <li><a class="facebook" href="#" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
-                                    <li><a class="dribbble" href="#" target="_blank"><i class="fa-brands fa-dribbble"></i></a></li>
-                                    <li><a class="twitter" href="#" target="_blank"><i class="fa-brands fa-twitter"></i></a></li>
-                                    <li><a class="instagram" href="#" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+                                    <li><a class="facebook" href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+                                    <li><a class="dribbble" href="#"><i class="fa-brands fa-dribbble"></i></a></li>
+                                    <li><a class="twitter" href="#"><i class="fa-brands fa-twitter"></i></a></li>
+                                    <li><a class="instagram" href="#"><i class="fa-brands fa-instagram"></i></a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    <!-- end team member item --> 
-                    <!-- start team member item -->
-                    <div class="col team-style-06 mb-30px">
-                        <div class="d-flex flex-column p-40px pb-20px lg-p-30px text-center border-radius-6px bg-white box-shadow-quadruple-large position-relative">
-                            <div class="position-relative">
-                                <a href="demo-real-estate-agent-details.html" class="d-inline-block position-relative"><img class="rounded-circle w-150px h-150px mb-20px" src="https://via.placeholder.com/200x200" alt="">   
-                                    <span class="fs-13 fw-600 text-dark-gray alt-font lh-30 position-absolute top-25px right-minus-40px border-radius-30px bg-yellow ps-15px pe-15px"><i class="fa-solid fa-star"></i> 4.8</span></a>
-                            </div>
-                            <a href="demo-real-estate-agent-details.html" class="text-dark-gray alt-font fs-19 fw-600 mb-5px">Bryan jonhson</a>
-                            <p class="w-90 mx-auto lh-28">I'm Bryan, Expert in <span class="text-dark-gray text-decoration-line-bottom fw-500">property </span>broker.</p>
-                            <div class="text-center elements-social social-icon-style-02 border-top border-color-light-medium-gray w-100 pt-15px">
-                                <ul class="small-icon dark">
-                                    <li><a class="facebook" href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
-                                    <li><a class="dribbble" href="http://www.dribbble.com" target="_blank"><i class="fa-brands fa-dribbble"></i></a></li>
-                                    <li><a class="twitter" href="http://www.twitter.com" target="_blank"><i class="fa-brands fa-twitter"></i></a></li>
-                                    <li><a class="instagram" href="http://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end team member item --> 
-                    <!-- start team member item -->
-                    <div class="col team-style-06 mb-30px">
-                        <div class="d-flex flex-column p-40px pb-20px lg-p-30px text-center border-radius-6px bg-white box-shadow-quadruple-large position-relative">
-                            <div class="position-relative">
-                                <a href="demo-real-estate-agent-details.html" class="d-inline-block position-relative"><img class="rounded-circle w-150px h-150px mb-20px" src="https://via.placeholder.com/200x200" alt="">   
-                                    <span class="fs-13 fw-600 text-dark-gray alt-font lh-30 position-absolute top-25px right-minus-40px border-radius-30px bg-yellow ps-15px pe-15px"><i class="fa-solid fa-star"></i> 4.9</span></a>
-                            </div>
-                            <a href="demo-real-estate-agent-details.html" class="text-dark-gray alt-font fs-19 fw-600 mb-5px">Jemmy watson</a>
-                            <p class="w-90 mx-auto lh-28">I'm Jemmy, Expert in <span class="text-dark-gray text-decoration-line-bottom fw-500">property</span>  lawyer.</p>
-                            <div class="text-center elements-social social-icon-style-02 border-top border-color-light-medium-gray w-100 pt-15px">
-                                <ul class="small-icon dark">
-                                    <li><a class="facebook" href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
-                                    <li><a class="dribbble" href="http://www.dribbble.com" target="_blank"><i class="fa-brands fa-dribbble"></i></a></li>
-                                    <li><a class="twitter" href="http://www.twitter.com" target="_blank"><i class="fa-brands fa-twitter"></i></a></li>
-                                    <li><a class="instagram" href="http://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end team member item --> 
-                    <!-- start team member item -->
-                    <div class="col team-style-06 mb-30px">
-                        <div class="d-flex flex-column p-40px pb-20px lg-p-30px text-center border-radius-6px bg-white box-shadow-quadruple-large position-relative">
-                            <div class="position-relative">
-                                <a href="demo-real-estate-agent-details.html" class="d-inline-block position-relative"><img class="rounded-circle w-150px h-150px mb-20px" src="https://via.placeholder.com/200x200" alt="">   
-                                    <span class="fs-13 fw-600 text-dark-gray alt-font lh-30 position-absolute top-25px right-minus-40px border-radius-30px bg-yellow ps-15px pe-15px"><i class="fa-solid fa-star"></i> 4.6</span></a>
-                            </div>
-                            <a href="demo-real-estate-agent-details.html" class="text-dark-gray alt-font fs-19 fw-600 mb-5px">Jeremy dupont</a>
-                            <p class="w-90 mx-auto lh-28">I'm Jeremy, Expert in  <span class="text-dark-gray text-decoration-line-bottom fw-500">property</span>  broker.</p>
-                            <div class="text-center elements-social social-icon-style-02 border-top border-color-light-medium-gray w-100 pt-15px">
-                                <ul class="small-icon dark">
-                                    <li><a class="facebook" href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
-                                    <li><a class="dribbble" href="http://www.dribbble.com" target="_blank"><i class="fa-brands fa-dribbble"></i></a></li>
-                                    <li><a class="twitter" href="http://www.twitter.com" target="_blank"><i class="fa-brands fa-twitter"></i></a></li>
-                                    <li><a class="instagram" href="http://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end team member item -->
-                    <!-- start team member item -->
-                    <div class="col team-style-06 md-mb-30px">
-                        <div class="d-flex flex-column p-40px pb-20px lg-p-30px text-center border-radius-6px bg-white box-shadow-quadruple-large position-relative">
-                            <div class="position-relative">
-                                <a href="demo-real-estate-agent-details.html" class="d-inline-block position-relative"><img class="rounded-circle w-150px h-150px mb-20px" src="https://via.placeholder.com/200x200" alt="">   
-                                    <span class="fs-13 fw-600 text-dark-gray alt-font lh-30 position-absolute top-25px right-minus-40px border-radius-30px bg-yellow ps-15px pe-15px"><i class="fa-solid fa-star"></i> 4.8</span></a>
-                            </div>
-                            <a href="demo-real-estate-agent-details.html" class="text-dark-gray alt-font fs-19 fw-600 mb-5px">Herman miller</a>
-                            <p class="w-90 mx-auto lh-28">I'm Herman, Expert in  <span class="text-dark-gray text-decoration-line-bottom fw-500">property</span>  broker.</p>
-                            <div class="text-center elements-social social-icon-style-02 border-top border-color-light-medium-gray w-100 pt-15px">
-                                <ul class="small-icon dark">
-                                    <li><a class="facebook" href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
-                                    <li><a class="dribbble" href="http://www.dribbble.com" target="_blank"><i class="fa-brands fa-dribbble"></i></a></li>
-                                    <li><a class="twitter" href="http://www.twitter.com" target="_blank"><i class="fa-brands fa-twitter"></i></a></li>
-                                    <li><a class="instagram" href="http://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end team member item -->
-                    <!-- start team member item -->
-                    <div class="col team-style-06 md-mb-30px">
-                        <div class="d-flex flex-column p-40px pb-20px lg-p-30px text-center border-radius-6px bg-white box-shadow-quadruple-large position-relative">
-                            <div class="position-relative">
-                                <a href="demo-real-estate-agent-details.html" class="d-inline-block position-relative"><img class="rounded-circle w-150px h-150px mb-20px" src="https://via.placeholder.com/200x200" alt="">   
-                                    <span class="fs-13 fw-600 text-dark-gray alt-font lh-30 position-absolute top-25px right-minus-40px border-radius-30px bg-yellow ps-15px pe-15px"><i class="fa-solid fa-star"></i> 4.7</span></a>
-                            </div>
-                            <a href="demo-real-estate-agent-details.html" class="text-dark-gray alt-font fs-19 fw-600 mb-5px">Jessica dover</a>
-                            <p class="w-90 mx-auto lh-28">I'm Jessica, Expert in  <span class="text-dark-gray text-decoration-line-bottom fw-500">property</span>  broker.</p>
-                            <div class="text-center elements-social social-icon-style-02 border-top border-color-light-medium-gray w-100 pt-15px">
-                                <ul class="small-icon dark">
-                                    <li><a class="facebook" href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
-                                    <li><a class="dribbble" href="http://www.dribbble.com" target="_blank"><i class="fa-brands fa-dribbble"></i></a></li>
-                                    <li><a class="twitter" href="http://www.twitter.com" target="_blank"><i class="fa-brands fa-twitter"></i></a></li>
-                                    <li><a class="instagram" href="http://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end team member item -->
-                    <!-- start team member item -->
-                    <div class="col team-style-06 xs-mb-30px">
-                        <div class="d-flex flex-column p-40px pb-20px lg-p-30px text-center border-radius-6px bg-white box-shadow-quadruple-large position-relative">
-                            <div class="position-relative">
-                                <a href="demo-real-estate-agent-details.html" class="d-inline-block position-relative"><img class="rounded-circle w-150px h-150px mb-20px" src="https://via.placeholder.com/200x200" alt="">   
-                                    <span class="fs-13 fw-600 text-dark-gray alt-font lh-30 position-absolute top-25px right-minus-40px border-radius-30px bg-yellow ps-15px pe-15px"><i class="fa-solid fa-star"></i> 4.6</span></a>
-                            </div>
-                            <a href="demo-real-estate-agent-details.html" class="text-dark-gray alt-font fs-19 fw-600 mb-5px">John parker</a>
-                            <p class="w-90 mx-auto lh-28">I'm John, Expert in  <span class="text-dark-gray text-decoration-line-bottom fw-500">property</span>  broker.</p>
-                            <div class="text-center elements-social social-icon-style-02 border-top border-color-light-medium-gray w-100 pt-15px">
-                                <ul class="small-icon dark">
-                                    <li><a class="facebook" href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
-                                    <li><a class="dribbble" href="http://www.dribbble.com" target="_blank"><i class="fa-brands fa-dribbble"></i></a></li>
-                                    <li><a class="twitter" href="http://www.twitter.com" target="_blank"><i class="fa-brands fa-twitter"></i></a></li>
-                                    <li><a class="instagram" href="http://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end team member item -->
-                    <!-- start team member item -->
-                    <div class="col team-style-06">
-                        <div class="d-flex flex-column p-40px pb-20px lg-p-30px text-center border-radius-6px bg-white box-shadow-quadruple-large position-relative">
-                            <div class="position-relative">
-                                <a href="demo-real-estate-agent-details.html" class="d-inline-block position-relative"><img class="rounded-circle w-150px h-150px mb-20px" src="https://via.placeholder.com/200x200" alt="">   
-                                    <span class="fs-13 fw-600 text-dark-gray alt-font lh-30 position-absolute top-25px right-minus-40px border-radius-30px bg-yellow ps-15px pe-15px"><i class="fa-solid fa-star"></i> 4.9</span></a>
-                            </div>
-                            <a href="demo-real-estate-agent-details.html" class="text-dark-gray alt-font fs-19 fw-600 mb-5px">Michal ruheen</a>
-                            <p class="w-90 mx-auto lh-28">I'm Michal, Expert in  <span class="text-dark-gray text-decoration-line-bottom fw-500">property</span>  broker.</p>
-                            <div class="text-center elements-social social-icon-style-02 border-top border-color-light-medium-gray w-100 pt-15px">
-                                <ul class="small-icon dark">
-                                    <li><a class="facebook" href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
-                                    <li><a class="dribbble" href="http://www.dribbble.com" target="_blank"><i class="fa-brands fa-dribbble"></i></a></li>
-                                    <li><a class="twitter" href="http://www.twitter.com" target="_blank"><i class="fa-brands fa-twitter"></i></a></li>
-                                    <li><a class="instagram" href="http://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end team member item -->
+                </div>
+                <!-- end team member item -->
+                {% endfor %}
                 </div>
                 <div class="row justify-content-center" data-anime='{ "translateX": [0, 0], "opacity": [0,1], "duration": 1200, "delay": 50, "staggervalue": 150, "easing": "easeOutQuad" }'>
                     <div class="col-auto icon-with-text-style-08">

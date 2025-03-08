@@ -64,3 +64,15 @@ class Annonces(models.Model):
 class AnnoncePhoto(models.Model):
     annonce = models.ForeignKey(Annonces, on_delete=models.CASCADE, related_name="photos")
     image = models.ImageField(upload_to="annonces/")
+
+from django.db import models
+
+class Agents(models.Model):
+    nom = models.CharField(max_length=100)
+    prenoms = models.CharField(max_length=100)
+    poste = models.CharField(max_length=100)
+    description = models.TextField()
+    image = models.ImageField(upload_to='agents/')  # Dossier où seront stockées les images
+
+    def __str__(self):
+        return f"{self.nom} {self.prenoms} - {self.poste}"

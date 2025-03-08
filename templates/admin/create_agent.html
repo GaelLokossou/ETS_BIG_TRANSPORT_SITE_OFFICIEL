@@ -1,0 +1,96 @@
+{% extends 'admin/admin.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creation d'agent</title>
+    <style>
+        /* Styles CSS (conservés depuis ton template) */
+        .ff_fileupload_uploads .ff_fileupload_summary {
+            padding: 0 0 0 1em;
+            font-size: 0.9em;
+            white-space: normal;
+            color: #7a8082;
+        }
+        /* ... autres styles ... */
+    </style>
+</head>
+<body>
+    <!-- breadcrumb -->
+    <div class="breadcrumb-header justify-content-between">
+        <div class="my-auto">
+            <div class="d-flex">
+                <h4 class="content-title mb-0 my-auto">Création d'un agent</h4><span class="text-muted mt-1 tx-13 ml-2 mb-0">/ formulaire</span>
+            </div>
+        </div>
+    </div>
+    <!-- breadcrumb -->
+
+    <!-- row -->
+    <div class="row">
+        <div class="col-md-12 col-xl-12 col-xs-12 col-sm-12">
+            <!-- div -->
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row row-sm">
+                    <div class="col-lg-12 col-md-12">
+                        <div>
+                            <h6 class="card-title mb-1">Détails de l'agent</h6>
+                            <p class="text-muted card-sub-title">Informations précises et complètes sur l'agent.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12">
+                        <p class="mg-b-10">Nom</p>
+                        <input class="form-control" placeholder="Nom" name="nom" type="text">
+                    </div>
+                </div>
+                <div class="row row-sm mg-t-20">
+                    <div class="col-lg-12 col-md-12">
+                        <p class="mg-b-10">Prénoms</p>
+                        <input class="form-control" placeholder="Prénoms" name="prenoms" type="text">
+                    </div>
+                </div>
+                <div class="row row-sm mg-t-20">
+                    <div class="col-lg-12 col-md-12">
+                        <p class="mg-b-10">Poste</p>
+                        <input class="form-control" placeholder="Poste" name="poste" type="text">
+                    </div>
+                </div>
+
+                <div class="row row-sm mg-t-20">
+                    <div class="col-lg">
+                        <p class="mg-b-10">Description</p>
+                        <textarea class="form-control" placeholder="Description" name="description" rows="3"></textarea>
+                    </div>
+                </div>
+
+                <div class="row row-sm mg-t-20">
+                    <div class="col-lg-12 col-md-12">
+                        <p class="mg-b-10">Image</p>
+                        <input type="file" name="photos" accept=".jpg, .png, image/jpeg, image/png">
+                    </div>
+                </div>
+
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary waves-effect waves-light">
+                        <span class="btn-double-text" data-text="">Créer l'agent</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- row closed -->
+</div>
+</body>
+</html>
+{% endblock %}

@@ -20,6 +20,8 @@ urlpatterns = [
     path('contact/', views.contact_view, name='contact-us'),
     path('produits/', views.produits, name='produits'),
     path('locations/', views.locations, name='locations'),
+    path('agents/creer/', views.create_agent, name='create-agent'),
+    path('admin-site/agents/', views.agents_index, name='agent-index'),
     path('agents/', views.agents, name='agents'),
 ]
 
