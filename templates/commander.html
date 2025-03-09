@@ -2,52 +2,73 @@
 {% load static %}
 
 {% block content %}
-    <!-- DEBUT SECTION COMMANDE -->
-    <form class="form-commander" method="post">
-        {% csrf_token %}
-        <!-- Champ Nom -->
-        <label for="name">Nom :</label>
-        <input type="text" id="name" name="name" placeholder="Entrez votre nom" required>
 
-        <!-- Champ Lieu ou Quartier -->
-        <label for="lieu">Lieu / Quartier :</label>
-        <input type="text" id="lieu" name="lieu" placeholder="Entrez le lieu ou le quartier du chantier" required>
-
-        <!-- Champ Numéro -->
-        <label for="number">Numéro :</label>
-        <input type="tel" id="number" name="number" placeholder="Entrez votre numéro de téléphone" required>
-
-        <!-- Sélection principale -->
-        <label for="choix-principal">Choisissez une option : TYPE DE CAMION / NOMBRE DE CUBAGE</label>
-        <select id="choix-principal" name="choix_principal" required>
-            <option value="" disabled selected>Type de camion / nombre de cubage</option>
-            <option value="type_camion">Type de camion</option>
-            <option value="nombre_cubage">Nombre de cubage</option>
-        </select>
-
-        <!-- Sélection de camion -->
-        <div id="camion-section" style="display: none;">
-            <label for="camion-type">Type de camion :</label>
-            <select id="camion-type" name="camion_type">
-                <option value="" disabled selected>Choisissez un type de camion</option>
-                <option value="6_roues">Camion 6 roues</option>
-                <option value="10_roues">Camion 10 roues</option>
-                <option value="sinotruk">Camion Sinotruk</option>
-                <option value="remorque">Camion Remorque</option>
-            </select>
-            <label for="nombre_voyage">Nombre de voyage</label>
-            <input type="text" id="nombre_voyage" name="nombre_voyage" min="1" max="100000" placeholder="Entrez le nombre de voyage">
+    <!-- start section --> 
+    <section class="bg-very-light-gray mb-0 d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 mx-auto d-flex flex-column justify-content-center align-items-center">
+                    <h3 class="alt-font text-dark-gray fw-500 mb-4 ls-minus-1px shadow-none text-center">
+                        Commande pour : <span class="fw-700 text-highlight d-inline-block">
+                            <strong>{{ annonce.titre }}</strong>
+                        </span>
+                    </h3>
+    
+                    <!-- FORMULAIRE -->
+                    <form class="form-commander w-100 p-4 shadow-lg rounded bg-white" method="post" style="max-width: 600px;">
+                        {% csrf_token %}
+                        <input type="hidden" name="annonce_id" value="{{ annonce.id }}">
+    
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Nom :</label>
+                            <input type="text" id="name" name="name" class="form-control" placeholder="Entrez votre nom" required>
+                        </div>
+    
+                        <div class="mb-3">
+                            <label for="lieu" class="form-label">Lieu / Quartier :</label>
+                            <input type="text" id="lieu" name="lieu" class="form-control" placeholder="Entrez le lieu ou le quartier du chantier" required>
+                        </div>
+    
+                        <div class="mb-3">
+                            <label for="number" class="form-label">Numéro :</label>
+                            <input type="tel" id="number" name="number" class="form-control" placeholder="Entrez votre numéro de téléphone" required>
+                        </div>
+    
+                        <div class="mb-3">
+                            <label for="choix-principal" class="form-label">Choisissez une option :</label>
+                            <select id="choix-principal" name="choix_principal" class="form-select" required>
+                                <option value="" disabled selected>Type de camion / nombre de cubage</option>
+                                <option value="type_camion">Type de camion</option>
+                                <option value="nombre_cubage">Nombre de cubage</option>
+                            </select>
+                        </div>
+    
+                        <div id="camion-section" class="mb-3" style="display: none;">
+                            <label for="camion-type" class="form-label">Type de camion :</label>
+                            <select id="camion-type" name="camion_type" class="form-select">
+                                <option value="" disabled selected>Choisissez un type de camion</option>
+                                <option value="6_roues">Camion 6 roues</option>
+                                <option value="10_roues">Camion 10 roues</option>
+                                <option value="sinotruk">Camion Sinotruk</option>
+                                <option value="remorque">Camion Remorque</option>
+                            </select>
+                            <label for="nombre_voyage" class="form-label mt-2">Nombre de voyage</label>
+                            <input type="text" id="nombre_voyage" name="nombre_voyage" class="form-control" min="1" max="100000" placeholder="Entrez le nombre de voyage">
+                        </div>
+    
+                        <div id="cubage-section" class="mb-3" style="display: none;">
+                            <label for="cubage" class="form-label">Nombre de cubage :</label>
+                            <input type="text" id="cubage" name="cubage" class="form-control" min="1" max="100000" placeholder="Entrez le nombre de cubage">
+                        </div>
+    
+                        <button type="submit" class="btn btn-dark-gray btn-very-small btn-round-edge fw-600">Envoyer</button>
+                    </form>
+                </div>
+            </div>
         </div>
-
-        <!-- Nombre de cubage -->
-        <div id="cubage-section" style="display: none;">
-            <label for="cubage">Nombre de cubage :</label>
-            <input type="text" id="cubage" name="cubage" min="1" max="100000" placeholder="Entrez le nombre de cubage">
-        </div>
-
-        <!-- Bouton de soumission -->
-        <button type="submit">Envoyer</button>
-    </form>
+    </section>
+    
+    <!-- start section -->  
 
     <script>
             // Afficher ou masquer les sections en fonction du choix principal

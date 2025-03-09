@@ -8,7 +8,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('search/', views.search, name='search'),
-    path('commander/', views.commander, name='commander'),
+    path('commander/<int:annonce_id>/', views.commander, name='commander'),
     path('admin-site/', views.admin_site, name='admin-site'),
     path('admin-site/annonces/', views.annonce_index, name='annonce-index'),
     path('admin-site/categories/', views.categorie_index, name='categorie-index'),

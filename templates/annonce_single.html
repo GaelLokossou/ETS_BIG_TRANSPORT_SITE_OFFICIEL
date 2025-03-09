@@ -64,7 +64,15 @@
                         <p class="mb-0 alt-font fw-500 text-dark-gray"><i class="feather icon-feather-phone-call icon-small text-base-color me-10px"></i><span class="fw-600 w-20 sm-w-15 xs-w-20 d-inline-block">Phone:</span><a href="tel:+22896986875" class="text-dark-gray text-base-color-hover">+228 97 86 87 47</a></p>
                         <p class="alt-font fw-500 text-dark-gray"><i class="feather icon-feather-mail icon-small text-base-color me-10px"></i><span class="fw-600 w-20 sm-w-15 xs-w-20 d-inline-block">Email:</span><a href="mailto:btbtp@75gmail.com" class="text-dark-gray text-decoration-line-bottom">btbtp@75gmail.com</a></p>
                     </div>
-                    <a href="{% url 'commander' %}" class="btn btn-white btn-large border-1 btn-round-edge btn-box-shadow me-15px xs-mt-10px xs-mb-10px">Commander</a>
+                    {% if annonce.category.titre == "VENTE" %}
+                        <a href="{% url 'commander' annonce.id%}" class="btn btn-white btn-large border-1 btn-round-edge btn-box-shadow me-15px xs-mt-10px xs-mb-10px">
+                            Commander
+                        </a>
+                    {% elif annonce.category.titre == "LOCATION" %}
+                        <a href="https://wa.me/+22896986875" class="btn btn-white btn-large border-1 btn-round-edge btn-box-shadow me-15px xs-mt-10px xs-mb-10px">
+                            Commander
+                        </a>
+                    {% endif %}
                 </div> 
             </div>
                 

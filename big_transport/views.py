@@ -2,6 +2,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib import messages
 from big_transport_app.models import Commander, ContactMessage, Categories, Annonces, AnnoncePhoto, Agents
 from django.core.mail import send_mail
+from django.shortcuts import render
 
 def index(request):
 # Récupérer les annonces les plus récentes (ou selon tes besoins)
@@ -26,7 +27,9 @@ from django.utils.html import strip_tags
 from django.contrib import messages
 import uuid
 
-def commander(request):
+def commander(request, annonce_id):
+    # ✅ Récupérer l'annonce concernée
+    annonce = get_object_or_404(Annonces, id=annonce_id)
     if request.method == 'POST':
         # Récupération des données du formulaire
         name = request.POST.get('name', 'Inconnu')
@@ -34,7 +37,13 @@ def commander(request):
         phone = request.POST.get('number', 'Non spécifié')
         choix_principal = request.POST.get('choix_principal', 'Non spécifié')
         camion_type = request.POST.get('camion_type', 'Non spécifié') if choix_principal == 'type_camion' else 'N/A'
-        nombre_cubage = request.POST.get('nombre_cubage', 'Non spécifié') if choix_principal == 'nombre_cubage' else 'N/A'
+        nombre_cubage = request.POST.get('cubage', '0')  # On récupère '0' si le champ est vide
+
+        try:
+            nombre_cubage = int(nombre_cubage) if nombre_cubage.strip() else 0  # Vérifie si la valeur n'est pas vide avant de convertir
+        except ValueError:
+            nombre_cubage = 0 
+
         nombre_voyage = request.POST.get('nombre_voyage', 'Non spécifié') if choix_principal == 'type_camion' else 'N/A'
 
         # Générer un ID unique pour la commande
@@ -48,8 +57,10 @@ def commander(request):
             choix_principal=choix_principal,
             camion_type=camion_type if choix_principal == 'type_camion' else None,
             nombre_voyage=nombre_voyage if choix_principal == 'type_camion' else None,
-            nombre_cubage=nombre_cubage if choix_principal == 'nombre_cubage' else None
+            nombre_cubage=nombre_cubage if choix_principal == 'nombre_cubage' else None,
+            annonce = annonce
         )
+
 
         # Construction du corps du message HTML
         html_message = f"""
@@ -92,10 +103,10 @@ def commander(request):
                     <h2>📢 Nouvelle Commande Reçue !</h2>
                 </div>
                 <div class="content">
-                    <p>Une nouvelle commande a été passée par <strong>{name}</strong>.</p>
+                    <p>Une nouvelle commande a été passée par <strong>{name}</strong> sur l'annonce : <strong>{annonce.titre}</strong>.</p>
                     <h3>Détails de la commande :</h3>
                     <table>
-                        <tr><th>Référence</th><td>{commande_id}</td></tr>
+                        <tr><th>Référence</th><td>{annonce.titre}</td></tr>
                         <tr><th>Nom</th><td>{name}</td></tr>
                         <tr><th>Lieu</th><td>{lieu}</td></tr>
                         <tr><th>Téléphone</th><td>{phone}</td></tr>
@@ -117,10 +128,10 @@ def commander(request):
 
         # Envoi de l'email
         email = EmailMessage(
-            subject=f"Nouvelle commande #{commande_id} de {name}",
+            subject=f"Nouvelle commande #{annonce.titre} de {name}",
             body=html_message,
-            from_email="lxolalikokouguel@gmail.com",
-            to=["btbtp@75gmail.com"],
+            from_email="btbtp75@gmail.com",
+            to=["btbtp75@gmail.com"],
         )
         email.content_subtype = "html"  # Indique que le contenu est HTML
         email.send()
@@ -128,7 +139,8 @@ def commander(request):
         messages.success(request, "Votre commande a été enregistrée avec succès !")
         return redirect('index')  # Redirection après soumission
 
-    return render(request, 'commander.html')
+    return render(request, 'commander.html', {'annonce': annonce})
+
 
 def admin_site(request):
     return render(request, 'admin/admin.html')
@@ -245,94 +257,91 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 
 def contact_view(request):
-    if request.method == 'POST':
-        name = request.POST.get('name', '').strip()
-        email = request.POST.get('email', '').strip()
-        phone = request.POST.get('phone', '').strip()
-        subject = request.POST.get('subject', '').strip()
-        message = request.POST.get('comment', '').strip()
+    if request.method == "POST":
+        name = request.POST.get("name")
+        email = request.POST.get("email")
+        phone = request.POST.get("phone", "")
+        message = request.POST.get("message")
 
         if not name or not email or not message:
             messages.error(request, "Veuillez remplir tous les champs obligatoires.")
-        else:
-            ContactMessage.objects.create(
-                name=name,
-                email=email,
-                phone=phone,
-                subject=subject,
-                message=message
-            )
-            messages.success(request, "Votre message a été envoyé avec succès!")
-            html_message = f"""
-                <html>
-                <head>
-                    <style>
-                        body {{ font-family: Arial, sans-serif; }}
-                        .header {{
-                            background-color: #663399;
-                            color: white;
-                            padding: 10px;
-                            text-align: center;
-                        }}
-                        .content {{ padding: 10px; }}
-                        .footer {{
-                            text-align: center;
-                            background-color: #6A0DAD;
-                            color: white;
-                            padding: 10px;
-                            margin-top: 20px;
-                        }}
-                        table {{
-                            width: 100%;
-                            border-collapse: collapse;
-                            margin-top: 10px;
-                        }}
-                        th, td {{
-                            border: 1px solid #ddd;
-                            padding: 8px;
-                            text-align: left;
-                        }}
-                        th {{
-                            background-color: #663399;
-                            color: white;
-                        }}
-                    </style>
-                </head>
-                <body>
-                    <div class="header">
-                        <h2>📢 Nouvelle Commande Reçue !</h2>
-                    </div>
-                    <div class="content">
-                        <p>Une nouvelle commande a été passée par <strong>{name}</strong>.</p>
-                        <h3>Détails de la commande :</h3>
-                        <table>
-                            <tr><th>Nom</th><td>{name}</td></tr>
-                            <tr><th>Téléphone</th><td>{phone}</td></tr>
-                            <tr><th>Email</th><td>{email}</td></tr>
-                            <tr><th>Object</th><td>{subject}</td></tr>
-                            <tr><th>Message</th><td>{message}</td></tr>
-                        </table>
-                    </div>
-                    <div class="footer">
-                        <p>Merci de traiter cette commande rapidement.</p>
-                    </div>
-                </body>
-                </html>
-            """
+            return redirect("contact")
 
-            # Version texte brut pour les clients qui ne supportent pas HTML
-            plain_message = strip_tags(html_message)
+        # Sauvegarde dans la base de données
+        contact_message = ContactMessage.objects.create(
+            name=name, email=email, phone=phone, message=message
+        )
 
-            # Envoi de l'email
-            email = EmailMessage(
-                subject=f"Nouvelle message de {name}",
-                body=html_message,
-                from_email="lxolalikokouguel@gmail.com",
-                to=["btbtp@75gmail.com"],
-            )
-            email.content_subtype = "html"  # Indique que le contenu est HTML
-            email.send()
-        return redirect('contact-us')
+        html_message = f"""
+            <html>
+            <head>
+                <style>
+                    body {{ font-family: Arial, sans-serif; }}
+                    .header {{
+                        background-color: #663399;
+                        color: white;
+                        padding: 10px;
+                        text-align: center;
+                    }}
+                    .content {{ padding: 10px; }}
+                    .footer {{
+                        text-align: center;
+                        background-color: #6A0DAD;
+                        color: white;
+                        padding: 10px;
+                        margin-top: 20px;
+                    }}
+                    table {{
+                        width: 100%;
+                        border-collapse: collapse;
+                        margin-top: 10px;
+                    }}
+                    th, td {{
+                        border: 1px solid #ddd;
+                        padding: 8px;
+                        text-align: left;
+                    }}
+                    th {{
+                        background-color: #663399;
+                        color: white;
+                    }}
+                </style>
+            </head>
+            <body>
+                <div class="header">
+                    <h2>📢 Nouveau message !</h2>
+                </div>
+                <div class="content">
+                    <p>Un nouveau message a été envoyé par <strong>{name}</strong>.</p>
+                    <h3>Détails du message :</h3>
+                    <table>
+                        <tr><th>Nom</th><td>{name}</td></tr>
+                        <tr><th>Téléphone</th><td>{phone}</td></tr>
+                        <tr><th>Email</th><td>{email}</td></tr>
+                        <tr><th>Message</th><td>{message}</td></tr>
+                    </table>
+                </div>
+                <div class="footer">
+                    <p>Merci de traiter cette message rapidement.</p>
+                </div>
+            </body>
+            </html>
+        """
+
+        # Version texte brut pour les clients qui ne supportent pas HTML
+        plain_message = strip_tags(html_message)
+
+        # Envoi de l'email
+        email = EmailMessage(
+            subject=f"Nouvelle message de {name}",
+            body=html_message,
+            from_email=f"{email}",
+            to=["btbtp75@gmail.com"],
+        )
+        email.content_subtype = "html"  # Indique que le contenu est HTML
+        email.send()
+        messages.success(request, "Votre message a été envoyé avec succès !")
+        return redirect("contact-us")
 
     return render(request, 'contactus.html')
 

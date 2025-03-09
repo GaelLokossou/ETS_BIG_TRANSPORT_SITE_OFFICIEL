@@ -34,22 +34,31 @@
 
     <script type="text/javascript" src="{% static 'r/js/jquery.themepunch.revolution.min.js' %}"></script>
 </head>
-<body>
     <!--DEBUT MENU-->
     <nav class="nav-bar" id="acceuil">
         <ul>
             <li class="logo">ETS BIG-TRANSPORT</li>
             <li class="menu"><a href="{% url 'index' %}">Acceuil</a></li>
-            <li class="menu"><a href="#">A-propos</a></li>
             <li class="menu"><a href="{% url 'locations' %}">Locations</a></li>
             <li class="menu"><a href="{% url 'produits' %}">Produits</a></li>
-            <li class="menu"><a href="#">Nos Agents</a></li>
-            <li class="menu"><a href="#">Contactez-nous</a></li>
+            <li class="menu"><a href="https://wa.me/+22896986875">Nos Agents</a></li>
+            <li class="menu"><a href="{% url 'contact-us' %}">Contactez-nous</a></li>
         </ul>
         <form class="recherche" method="get" action="{% url 'search' %}">
             <input class="search" name="search" type="search" placeholder="Recherche">
             <a href="https://wa.me/+22896986875"><img src="{% static 'images/shopping-cart-fill.svg' %}" alt="shopping"></a>
         </form>
+        <div class="col-auto  text-end md-pe-0">
+            <div class="header-icon">
+                <div class="header-search-icon icon">
+                    <a href="" class=""   data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true" title="<span class=tooltip-title>Connexion (Administrateur)</span>"><span>
+                        <span class="" ><i class="fa fa-sign-in"></i></span>
+                    </span></a>
+
+                </div>
+
+            </div>
+        </div>
     </nav>
     <!--FIN MENU-->
 
@@ -65,7 +74,7 @@
                 <div class="col-auto d-flex flex-column flex-md-row align-items-center text-center text-md-start">
                     <div class="text-dark-gray fs-28 alt-font fw-500">Divers Materiaux de constructions <span class="fw-700 text-decoration-line-bottom">a vendre et a louer.</span></div>
                     <div class="bg-white border-radius-50px d-flex align-items-center p-10px ps-35px ms-20px md-ps-20px md-ms-15px box-shadow-medium sm-m-20px">
-                        <a href="#" class="text-dark-gray fs-22 alt-font fw-500 me-10px overflow-hidden">Dire, <span class="fw-700 w-65px text-start d-inline-block" data-fancy-text='{ "effect": "rotate", "string": ["Salut!", "Hi!", "Hello!"] }'></span></a>
+                        <a href="https://wa.me/+22896986875" class="text-dark-gray fs-22 alt-font fw-500 me-10px overflow-hidden">Dire, <span class="fw-700 w-65px text-start d-inline-block" data-fancy-text='{ "effect": "rotate", "string": ["Salut!", "Hi!", "Hello!"] }'></span></a>
                         <span class="text-dark-gray h-45px w-45px text-center d-flex align-items-center justify-content-center border-radius-100 bg-base-color-transparent fs-20">&#128075;</span>
                     </div>
                 </div>
@@ -80,7 +89,7 @@
                         <ul class="small-icon dark">
                             <li><a class="facebook" href="#" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
                             <li><a class="dribbble" href="https://wa.me/+22896986875" target="_blank"><i class="fa-brands fa-whatsapp"></i></a></li> 
-                            <li><a class="twitter" href="#" target="_blank"><i class="fa-brands fa-tiktok"></i></a></li> 
+                            <li><a class="twitter" href="#" target="_blank"><i class="fa-brands fa-tiktok"></i></a></li>
                             <li><a class="instagram" href="#" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
                         </ul>
                     </div>
@@ -90,10 +99,10 @@
                 <div class="col-6 col-lg-2 col-md-3 sm-mb-25px">
                     <span class="alt-font fs-18 fw-600 d-block text-dark-gray mb-5px">Entreprise</span>
                     <ul>
-                        <li><a href="#" id="titre-annonce">A-propos</a></li>
-                        <li><a href="#" id="titre-annonce">Nos agents</a></li>
+                        <li><a href="https://wa.me/+22896986875" id="titre-annonce">A-propos</a></li>
+                        <li><a href="https://wa.me/+22896986875" id="titre-annonce">Nos agents</a></li>
                         <li><a href="#" id="titre-annonce">Dernier blog</a></li>
-                        <li><a href="#" id="titre-annonce">Contact-nous</a></li>
+                        <li><a href="{% url 'contact-us' %}" id="titre-annonce">Contact-nous</a></li>
                     </ul>
                 </div>
                 <!-- end footer column -->
@@ -101,10 +110,10 @@
                 <div class="col-6 col-lg-2 col-md-3 sm-mb-25px">
                     <span class="alt-font fs-18 fw-600 d-block text-dark-gray mb-5px">Resources</span>
                     <ul>
-                        <li><a href="#" id="titre-annonce">Service de location</a></li>
-                        <li><a href="#" id="titre-annonce">Achat</a></li>
-                        <li><a href="#" id="titre-annonce">Service de demolition</a></li>
-                        <li><a href="#" id="titre-annonce">Budget</a></li>
+                        <li><a href="https://wa.me/+22896986875" id="titre-annonce">Service de location</a></li>
+                        <li><a href="https://wa.me/+22896986875" id="titre-annonce">Achat</a></li>
+                        <li><a href="https://wa.me/+22896986875" id="titre-annonce">Service de demolition</a></li>
+                        <li><a href="{% url 'contact-us' %}" id="titre-annonce">Budget</a></li>
                     </ul>
                 </div>
                 <!-- end footer column -->
@@ -112,8 +121,8 @@
                 <div class="col-6 col-lg-2 col-md-3">
                     <span class="alt-font fs-18 fw-600 d-block text-dark-gray mb-5px">Client</span>
                     <ul>                           
-                        <li><a href="#"  id="titre-annonce">Assistance client</a></li>
-                        <li><a href="#"  id="titre-annonce">Centre d'aide</a></li>
+                        <li><a href="https://wa.me/+22896986875"  id="titre-annonce">Assistance client</a></li>
+                        <li><a href="https://wa.me/+22896986875"  id="titre-annonce">Centre d'aide</a></li>
                         <li><a href="#"  id="titre-annonce">État du système</a></li>
                         <li><a href="#"  id="titre-annonce">Retour</a></li>
                     </ul>
@@ -126,7 +135,7 @@
                     <a href="mailto:btbtp@75gmail.com" class="text-dark-gray lh-22 d-inline-block mb-20px" id="titre-annonce">btbtp75@gmail.com</a>
                     <span class="d-block lh-normal">Service Client</span>
                     <a href="tel:+22896986875" class="text-dark-gray lh-22 d-inline-block" id="titre-annonce">+228 96 98 68 75</a>
-                    <a href="tel:+22896986875" class="text-dark-gray lh-22 d-inline-block" id="titre-annonce">+228 97 86 87 47</a>
+                    <a href="tel:+22897868747" class="text-dark-gray lh-22 d-inline-block" id="titre-annonce">+228 97 86 87 47</a>
                 </div>
                 <!-- end footer column -->                     
             </div>
@@ -135,7 +144,7 @@
                 <span class="fs-13 w-60 lg-w-70 md-w-90 sm-w-100 d-block mx-auto lh-22">ETS BIG-TRANSPORT <a href="#" class="text-dark-gray text-decoration-line-bottom"  id="titre-annonce">politique de confidentialite</a> et <a href="#" class="text-dark-gray text-decoration-line-bottom"  id="titre-annonce">les termes de service</a> apply. You must not use this website if you disagree with any of these website standard terms and conditions.</span>
             </div>
             <!-- end footer content -->
-        </div> 
+        </div>
     </footer>
     <!-- end footer -->
     <!-- start scroll progress -->

@@ -15,7 +15,7 @@
                                 <div class="alt-font fs-110 lg-fs-90 lh-90 lg-lh-80 mb-45px sm-mb-25px w-80 xs-w-100 ls-minus-2px">
                                     {{ annonce.titre|default:"Titre indisponible" }}
                                 </div>  
-                                <a href="{% url 'commander' %}" class="btn btn-white btn-large border-1 btn-round-edge btn-box-shadow me-15px xs-mt-10px xs-mb-10px">Commander</a>
+                                <a href="{% url 'commander' annonce.id %}" class="btn btn-white btn-large border-1 btn-round-edge btn-box-shadow me-15px xs-mt-10px xs-mb-10px">Commander</a>
                                 <a href="{% url 'detail-annonce' annonce.id %}" class="btn btn-transparent-white-light border-1 btn-large btn-round-edge fw-500 xs-mt-10px xs-mb-10px">Voir details</a>
                             </div>
                         </div> 
@@ -119,7 +119,7 @@
                         <a href="#" class="fw-600 alt-font text-dark-gray text-dark-gray-hover d-flex align-items-center">
                             Voir tous les produits
                             <span class="d-flex align-items-center justify-content-center bg-dark-gray h-40px w-40px text-center rounded-circle fs-16 text-white ms-10px">
-                                <i class="fa-brands fa-arrow-right" style="color: #ffffff;"></i>
+                                <i class="feather icon-feather-arrow-right"></i>
                             </span>
                         </a>
                     </div>
@@ -145,14 +145,20 @@
                                     </a>
                                 </div>
                                 <div class="col text-end">
-                                    <a href="#" class="btn btn-dark-gray btn-very-small btn-round-edge fw-600">
-                                        Commander
-                                    </a>
+                                    {% if annonce.category.titre == "VENTE" %}
+                                        <a href="{% url 'commander' annonce.id%}" class="btn btn-dark-gray btn-very-small btn-round-edge fw-600">
+                                            Commander
+                                        </a>
+                                    {% elif annonce.category.titre == "LOCATION" %}
+                                        <a href="https://wa.me/+22896986875" class="btn btn-dark-gray btn-very-small btn-round-edge fw-600">
+                                            Commander
+                                        </a>
+                                    {% endif %}
                                 </div>
                             </div>
                             <div class="row ps-35px pe-35px pt-20px pb-20px md-ps-25px md-pe-25px align-items-center">
                                 <div class="col">
-                                    <a href="#" class="btn btn-dark-gray btn-very-small btn-round-edge fw-600">
+                                    <a href="{% url 'detail-annonce' annonce.id%}" class="btn btn-dark-gray btn-very-small btn-round-edge fw-600">
                                         Voir Plus
                                     </a>
                                 </div>
@@ -176,8 +182,8 @@
                 <div class="col-xl-4 col-lg-5 md-mb-50px sm-mb-35px">
                     <span class="fs-20 d-inline-block mb-15px text-base-color">Fournisseur de matériaux de construction et solutions de transport</span>
                     <h3 class="alt-font fw-500 text-dark-gray ls-minus-1px w-90 xl-w-100 shadow-none" data-shadow-animation="true" data-animation-delay="700">Nous sommes disponibles dans <span class="fw-700 text-highlight d-inline-block">plusieurs quartiers<span class="bg-base-color h-10px bottom-1px opacity-3 separator-animation"></span></span></h3>
-                    <p class="mb-30px w-90 md-w-100">Nous vous accompagnons dans vos projets de construction en vous proposant une large gamme de matériaux : sable, gravier, briques et bien plus encore.
-                        Nous mettons également à votre disposition des camions pour la livraison et le transport de vos matériaux, garantissant rapidité et efficacité.</p>
+                    <p class="mb-30px w-90 md-w-100">Nous vous accompagnons dans vos projets de construction en vous proposant une large gamme de matériaux : sable, gravier, briques et bien plus encore.</p>
+                    <p class="mb-30px w-90 md-w-100">Nous mettons également à votre disposition des camions pour la livraison et le transport de vos matériaux, garantissant rapidité et efficacité.</p>
                     <div class="d-flex">
                         <!-- start slider navigation -->
                         <div class="slider-one-slide-prev-1 swiper-button-prev slider-navigation-style-04 bg-white box-shadow-large"><i class="fa-solid fa-arrow-left icon-small text-dark-gray"></i></div>
@@ -195,7 +201,7 @@
                                     <div class="col interactive-banner-style-05">
                                         <figure class="m-0 hover-box overflow-hidden position-relative border-radius-6px">
                                             <a href="#">
-                                                <img src="{% static 'images/demo-real-estate-08.png' %}" class="w-100 border-radius-6px" alt="" />
+                                                <img src="{% static 'images/chargeuse (2).jpg' %}" class="w-100 border-radius-6px" alt="" />
                                                 <div class="position-absolute top-0px left-0px w-100 h-100 bg-gradient-gray-light-dark-transparent"></div>
                                                 <div class="position-absolute top-25px right-25px bg-orange border-radius-50px ps-5px pe-15px lh-28">
                                                     <div class="w-20px h-20px text-center bg-white rounded-circle d-inline-block align-middle text-orange lh-18">
@@ -205,7 +211,6 @@
                                                 </div>
                                             </a>
                                             <figcaption class="d-flex flex-column align-items-start justify-content-center position-absolute left-0px top-0px w-100 h-100 z-index-1 p-50px xl-p-40px sm-p-30px last-paragraph-no-margin">
-                                                <img src="{% static 'images/demo-real-estate-08.png' %}" class="mb-auto h-70px" alt="" />
                                                 <a href="#" class="text-white alt-font fw-600 fs-26">Adakpame, LOME</a>
                                                 <span class="opacity-7 text-white">+17 Projets</span>
                                             </figcaption>
@@ -220,7 +225,7 @@
                                     <div class="col interactive-banner-style-05">
                                         <figure class="m-0 hover-box overflow-hidden position-relative border-radius-6px">
                                             <a href="#">
-                                                <img src="{% static 'images/demo-real-estate-08.png' %}" class="w-100 border-radius-6px" alt="" />
+                                                <img src="{% static 'images/chargeuse (2).jpg' %}" class="w-100 border-radius-6px" alt="" />
                                                 <div class="position-absolute top-0px left-0px w-100 h-100 bg-gradient-gray-light-dark-transparent"></div>
                                                 <div class="position-absolute top-25px right-25px bg-base-color border-radius-50px ps-5px pe-15px lh-28">
                                                     <div class="w-20px h-20px text-center bg-white rounded-circle d-inline-block align-middle text-base-color lh-18">
@@ -230,9 +235,8 @@
                                                 </div>
                                             </a>
                                             <figcaption class="d-flex flex-column align-items-start justify-content-center position-absolute left-0px top-0px w-100 h-100 z-index-1 p-50px xl-p-40px sm-p-30px last-paragraph-no-margin">
-                                                <img src="{% static 'images/demo-real-estate-08.png' %}" class="mb-auto h-70px" alt="" />
                                                 <a href="#" class="text-white alt-font fw-600 fs-26">Segbe-Akato, LOME</a>
-                                                <span class="opacity-7 text-white">+20 Clients</span>
+                                                <span class="opacity-7 text-white">+200 Clients</span>
                                             </figcaption>
                                         </figure>
                                     </div>
